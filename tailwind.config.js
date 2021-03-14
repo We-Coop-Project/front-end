@@ -1,12 +1,11 @@
 module.exports = {
-  purge: [],
-  // purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   darkMode: "class",
   theme: {
     extend: {
       colors: {
         primary: "#283B8A",
-        secondary: "#0C122D",
+        secondary: "#090E21",
       },
       fontFamily: {
         sanspro: ["Source Sans Pro", "sans-serif"],
