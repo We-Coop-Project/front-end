@@ -8,8 +8,8 @@ const Home = () => {
     <div className="Home">
       <ImgContainer>
         <img
-          className="Top"
-          src={`${process.env.PUBLIC_URL}/img/top.jpg`}
+          className="Img"
+          src={`${process.env.PUBLIC_URL}/img/home.jpg`}
           alt="top"
         />
       </ImgContainer>
