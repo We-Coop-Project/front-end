@@ -35,7 +35,19 @@
 }
 
 @layer components {
-  .layout {
-    @apply h-screen w-screen flex items-center justify-center;
+  .App {
+    @apply h-screen w-screen flex items-center justify-center border;
+  }
+  .ContentContainer {
+    @apply h-1/2 lg:h-full w-full lg:w-1/2 flex items-center justify-center border;
+  }
+  .ImgContainer {
+    @apply h-1/2 lg:h-full w-full lg:w-1/2 flex items-center justify-center border;
+  }
+  .Home {
+    @apply h-full w-full flex flex-wrap lg:flex-nowrap border;
+  }
+  .Top {
+    @apply object-cover h-full lg:h-screen w-full lg:w-auto border;
   }
 }
