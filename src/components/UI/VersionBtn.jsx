@@ -3,10 +3,10 @@ import useDarkMode from "../../hooks/useDarkMode";
 const VersionBtn = () => {
   const [colorTheme, setTheme] = useDarkMode();
   return (
-    <div className="p-4 fixed top-0 right-0">
+    <div>
       <span
         onClick={() => setTheme(colorTheme)}
-        className="transition duration-500 ease-in-out w-8 h-8 bg-indigo-500 rounded-full shadow-lg cursor-pointer text-white flex items-center justify-center transform hover:-translate-y-1 hover:scale-110 dark:bg-white"
+        className="transition duration-500 ease-in-out w-8 h-8 bg-gray-400 rounded-full shadow-lg cursor-pointer text-white flex items-center justify-center transform hover:-translate-y-1 hover:scale-110 dark:bg-white"
       >
         {colorTheme === "light" ? (
           <svg

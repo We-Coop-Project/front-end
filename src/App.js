@@ -1,12 +1,12 @@
 import React from "react";
 
-import VersionBtn from "./components/UI/VersionBtn";
+import NavBar from "./components/UI/NavBar";
 import Home from "./components/Home/Home";
 
 const App = () => {
   return (
     <>
-      <VersionBtn />
+      <NavBar />
       <div className="App">
         <Home />
       </div>

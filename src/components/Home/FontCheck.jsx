@@ -11,6 +11,10 @@ const FontCheck = () => {
       <h6>Hello World</h6>
       <p>Hello World</p>
       <small>Hello World</small>
+      <ul>
+        <li>This is li</li>
+        <li>Hello World</li>
+      </ul>
     </div>
   );
 };
