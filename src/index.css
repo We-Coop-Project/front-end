@@ -54,7 +54,7 @@
   .Home {
     @apply h-full w-full flex flex-wrap lg:flex-nowrap border;
   }
-  .Top {
+  .Img {
     @apply object-cover h-full lg:h-screen w-full lg:w-auto border;
   }
 }
