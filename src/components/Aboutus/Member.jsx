@@ -2,14 +2,12 @@ import React from "react";
 
 const Member = (props) => {
   return (
-    <div className="px-4">
-      <img
-        className="rounded-full border-4 border-blue-500"
-        src={props.image}
-        alt={props.name}
-      />
-      <h5>{props.name}</h5>
-      <p>{props.url}</p>
+    <div className="w-4/5 sm:w-5/6">
+      <img className="MemberImg" src={props.image} alt={props.name} />
+      <h6>{props.name}</h6>
+      <small>
+        <a href={props.url}>{props.url}</a>
+      </small>
     </div>
   );
 };

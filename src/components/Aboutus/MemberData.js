@@ -12,7 +12,7 @@ const MemberData = [
   {
     image: "",
     name: "Hiroshi Egawa",
-    url: "https://hiroshi.com",
+    url: "https://hiro.com",
   },
   {
     image: "",
