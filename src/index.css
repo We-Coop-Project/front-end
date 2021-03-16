@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply font-sanspro text-white dark:text-gray-400 bg-primary dark:bg-secondary;
+    @apply font-sanspro text-white dark:text-gray-400 bg-primary dark:bg-secondary select-none;
   }
   /* font-size */
   h1 {
@@ -36,6 +36,9 @@
   li {
     @apply text-base sm:text-lg xl:text-xl;
   }
+  button {
+    @apply cursor-pointer focus:outline-none;
+  }
 }
 
 @layer components {
@@ -46,7 +49,7 @@
     @apply h-16 w-full flex items-center justify-end fixed top-0 right-0 px-4 border;
   }
   .ContentContainer {
-    @apply h-1/2 lg:h-full w-full lg:w-1/2 flex items-center justify-center border;
+    @apply h-1/2 lg:h-full w-full lg:w-1/2 flex flex-col items-center justify-center border;
   }
   .ImgContainer {
     @apply h-1/2 lg:h-full w-full lg:w-1/2 flex items-center justify-center border;
@@ -55,6 +58,20 @@
     @apply h-full w-full flex flex-wrap lg:flex-nowrap border;
   }
   .Img {
-    @apply object-cover h-full lg:h-screen w-full lg:w-auto border;
+    @apply object-contain h-full lg:h-screen w-full lg:w-auto border;
+  }
+  .Button {
+    @apply bg-white text-primary dark:text-secondary
+    rounded-lg text-center py-3 my-3 w-72;
+  }
+  .SubmitBtn {
+    @apply bg-white text-primary dark:text-secondary
+    hover:bg-gray-300
+    rounded-lg text-center py-1 my-3 w-20;
+  }
+  .Input {
+    @apply bg-white text-primary dark:text-secondary
+    placeholder-primary dark:placeholder-secondary focus:placeholder-transparent focus:outline-none
+    rounded-lg text-center py-3 my-3 w-72;
   }
 }
