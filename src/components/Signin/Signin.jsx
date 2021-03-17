@@ -1,9 +1,6 @@
 import React from "react";
-import ContentContainer from "../UI/ContentContainer";
-import ImgContainer from "../UI/ImgContainer";
 import signinImg from "../../assets/img/login.png";
-import Title from "../UI/Title";
-import Button from "../UI/Button";
+import { ContentContainer, ImgContainer, Title, Button } from "../UI/index";
 
 const Signin = () => {
   return (

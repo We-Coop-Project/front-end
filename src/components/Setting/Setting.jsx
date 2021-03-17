@@ -1,11 +1,7 @@
 import React from "react";
-import ContentContainer from "../UI/ContentContainer";
-import ImgContainer from "../UI/ImgContainer";
 import settingImg from "../../assets/img/setting.png";
-import Title from "../UI/Title";
-import SubmitBtn from "../UI/SubmitBtn";
-import NextBtn from "../UI/NextBtn";
 import Sliders from "./Sliders";
+import { ContentContainer, ImgContainer, Title, SubmitBtn } from "../UI/index";
 
 const Signin = () => {
   return (
@@ -16,10 +12,9 @@ const Signin = () => {
       <ContentContainer>
         <Title title="Setting" />
         <Sliders />
-        <div className="flex justify-around w-72">
-          <SubmitBtn />
-          <NextBtn />
-        </div>
+        {/* <div className="mr-40"> */}
+        <SubmitBtn />
+        {/* </div> */}
       </ContentContainer>
     </div>
   );

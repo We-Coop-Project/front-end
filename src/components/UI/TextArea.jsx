@@ -1,6 +1,6 @@
 import React from "react";
 
-const Input = ({ id, placeholder }) => {
+const Input = ({ id, placeholder, onChange }) => {
   return (
     <div>
       <textarea
@@ -8,8 +8,9 @@ const Input = ({ id, placeholder }) => {
         placeholder={placeholder}
         id={id}
         cols="30"
-        rows="5"
+        rows="3"
         className="Input"
+        onChange={onChange}
       ></textarea>
     </div>
   );

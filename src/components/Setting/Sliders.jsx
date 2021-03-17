@@ -1,48 +1,72 @@
 import React from "react";
 import Slider from "react-slick";
-import InputTab from "../UI/InputTab";
+import { InputTab, NextArrow, BackArrow } from "../UI/index";
 
 const Sliders = () => {
-  let settings = {
-    arrows: true,
+  const settings = {
+    nextArrow: <NextArrow type="next" />,
+    prevArrow: <BackArrow type="prev" />,
     infinite: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+
+  const onFocusHandle = (e) => {
+    e.preventDefault();
+    e.target.type = "date";
+  };
+
+  const onBlurHandle = (e) => {
+    e.preventDefault();
+    e.target.type = "text";
+  };
+
   return (
     <div>
       <Slider {...settings} className="w-80 text-center">
         <div>
-          <InputTab id="start" type="date" placeholder="Co-op start date" />
-          <InputTab id="end" type="date" placeholder="Co-op end date" />
+          <InputTab
+            id="start"
+            type="text"
+            placeholder="Coop Start Date"
+            onFocus={onFocusHandle}
+            onBlur={onBlurHandle}
+          />
+          <InputTab
+            id="end"
+            type="text"
+            placeholder="Coop End Date"
+            onFocus={onFocusHandle}
+            onBlur={onBlurHandle}
+          />
+          <InputTab
+            id="duration"
+            type="number"
+            step="3"
+            placeholder="Co-op duration"
+          />
         </div>
         <div>
-          <InputTab id="start" type="date" placeholder="Co-op start date" />
-          <InputTab id="end" type="date" placeholder="Co-op end date" />
+          <InputTab id="company" type="text" placeholder="Company name" />
+          <InputTab id="isCoop" type="text" placeholder="Co-op job?" />
         </div>
         <div>
-          <InputTab id="start" type="date" placeholder="Co-op start date" />
-          <InputTab id="end" type="date" placeholder="Co-op end date" />
+          <InputTab
+            id="start"
+            type="text"
+            placeholder="Coop Start Date"
+            onFocus={onFocusHandle}
+            onBlur={onBlurHandle}
+          />
+          <InputTab
+            id="end"
+            type="text"
+            placeholder="Coop End Date"
+            onFocus={onFocusHandle}
+            onBlur={onBlurHandle}
+          />
         </div>
-        {/* <div>
-          <h3>1</h3>
-        </div>
-        <div>
-          <h3>2</h3>
-        </div>
-        <div>
-          <h3>3</h3>
-        </div>
-        <div>
-          <h3>4</h3>
-        </div>
-        <div>
-          <h3>5</h3>
-        </div>
-        <div>
-          <h3>6</h3>
-        </div> */}
       </Slider>
     </div>
   );

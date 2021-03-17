@@ -1,14 +1,17 @@
 import React from "react";
 
-const Input = ({ id, type, step, placeholder }) => {
+const Input = (props) => {
   return (
     <div>
       <input
-        id={id}
-        type={type}
-        step={step}
-        placeholder={placeholder}
+        id={props.id}
+        type={props.type}
+        step={props.step}
+        placeholder={props.placeholder}
         className="Input"
+        onChange={props.onChange}
+        onFocus={props.onFocus}
+        onBlur={props.onBlur}
       />
     </div>
   );

@@ -11,6 +11,7 @@ import Contact from "./components/Contact/Contact";
 import Input from "./components/Input/Input";
 import Setting from "./components/Setting/Setting";
 import Sliders from "./components/Setting/Sliders";
+import Modal from "./components/UI/Modal";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/input" exact component={Input}></Route>
           <Route path="/setting" exact component={Setting}></Route>
           <Route path="/sliders" exact component={Sliders}></Route>
+          <Route path="/modal" exact component={Modal}></Route>
         </Switch>
       </div>
     </Router>

@@ -1,10 +1,12 @@
 import React from "react";
-import ContentContainer from "../UI/ContentContainer";
-import ImgContainer from "../UI/ImgContainer";
 import inputImg from "../../assets/img/input.png";
-import Title from "../UI/Title";
-import InputTab from "../UI/InputTab";
-import SubmitBtn from "../UI/SubmitBtn";
+import {
+  ContentContainer,
+  ImgContainer,
+  Title,
+  InputTab,
+  SubmitBtn,
+} from "../UI/index";
 
 const Signin = () => {
   return (

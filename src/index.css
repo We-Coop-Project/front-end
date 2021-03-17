@@ -62,16 +62,19 @@
   }
   .Button {
     @apply bg-white text-primary dark:text-secondary
-    rounded-lg text-center py-3 my-3 w-72;
+    rounded-lg text-center py-2 lg:py-3 my-3 w-64 lg:w-72;
   }
   .SubmitBtn {
     @apply bg-white text-primary dark:text-secondary
     hover:bg-gray-300
-    rounded-lg text-center py-1 my-3 w-20;
+    rounded-lg text-center py-1 my-2 lg:my-3 w-20;
   }
   .Input {
     @apply bg-white text-primary dark:text-secondary
     placeholder-primary dark:placeholder-secondary focus:placeholder-transparent focus:outline-none
-    rounded-lg text-center py-3 my-3 w-72;
+    rounded-lg text-center py-2 lg:py-3 my-3 w-64 lg:w-72;
+  }
+  .Modal {
+    @apply bg-red-600 absolute inset-0 m-auto w-2/3 h-1/4;
   }
 }
