@@ -1,20 +1,14 @@
-import React, { useState } from "react";
-import Modal from "react-modal";
+import React from "react";
 
-Modal.setAppElement("#root");
-
-const ModalAlert = (props) => {
-  const [isOpen, setIsOpen] = useState(props.boolean);
-
+const Modal = (props) => {
   return (
-    <div>
-      {/* <button onClick={() => setIsOpen(true)}>Open Modal</button> */}
-      <Modal isOpen={isOpen} className="Modal">
-        <h3>{props.content}</h3>
-        <button onClick={() => setIsOpen(false)}>Close Modal</button>
-      </Modal>
+    <div className="relative bg-white w-3/5 h-1/5 rounded-lg text-primary">
+      <div className="absolute inset-0 m-auto">
+        <h3>Modal</h3>
+        <button className="OkBtn">OK</button>
+      </div>
     </div>
   );
 };
 
-export default ModalAlert;
+export default Modal;

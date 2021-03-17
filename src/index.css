@@ -69,6 +69,11 @@
     hover:bg-gray-300
     rounded-lg text-center py-1 my-2 lg:my-3 w-20;
   }
+  .OkBtn {
+    @apply bg-primary dark:bg-secondary text-white 
+    hover:bg-gray-300
+    rounded-lg text-center py-1 my-2 lg:my-3 w-20;
+  }
   .Input {
     @apply bg-white text-primary dark:text-secondary
     placeholder-primary dark:placeholder-secondary focus:placeholder-transparent focus:outline-none

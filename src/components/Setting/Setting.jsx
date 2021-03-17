@@ -12,9 +12,7 @@ const Signin = () => {
       <ContentContainer>
         <Title title="Setting" />
         <Sliders />
-        {/* <div className="mr-40"> */}
         <SubmitBtn />
-        {/* </div> */}
       </ContentContainer>
     </div>
   );

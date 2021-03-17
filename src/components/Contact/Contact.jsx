@@ -28,7 +28,6 @@ const Contact = () => {
       alert("Invalid Email");
       return false;
     } else {
-      <Modal boolean="true" content="Thank you!" />;
       const payload = {
         text:
           "You have a message from we co-op app.\n" +
@@ -47,7 +46,7 @@ const Contact = () => {
         method: "POST",
         body: JSON.stringify(payload),
       }).then(() => {
-        alert("sent!");
+        alert("thank you");
       });
     }
   };

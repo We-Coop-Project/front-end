@@ -29,40 +29,35 @@ const Sliders = () => {
           <InputTab
             id="start"
             type="text"
-            placeholder="Coop Start Date"
+            placeholder="Co-op Start Date"
             onFocus={onFocusHandle}
             onBlur={onBlurHandle}
           />
           <InputTab
             id="end"
             type="text"
-            placeholder="Coop End Date"
+            placeholder="Co-op End Date"
             onFocus={onFocusHandle}
             onBlur={onBlurHandle}
           />
-          <InputTab
-            id="duration"
-            type="number"
-            step="3"
-            placeholder="Co-op duration"
-          />
+          <InputTab id="duration" type="number" placeholder="Co-op Hours" />
         </div>
         <div>
           <InputTab id="company" type="text" placeholder="Company name" />
-          <InputTab id="isCoop" type="text" placeholder="Co-op job?" />
+          <InputTab id="isCoop" type="text" placeholder="Co-op Job?" />
         </div>
         <div>
           <InputTab
             id="start"
             type="text"
-            placeholder="Coop Start Date"
+            placeholder="Co-op Start Date"
             onFocus={onFocusHandle}
             onBlur={onBlurHandle}
           />
           <InputTab
             id="end"
             type="text"
-            placeholder="Coop End Date"
+            placeholder="Co-op End Date"
             onFocus={onFocusHandle}
             onBlur={onBlurHandle}
           />
