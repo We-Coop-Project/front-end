@@ -20,6 +20,7 @@ const Aboutus = () => {
           omnis incidunt praesentium vel est consequuntur, modi quod eius
           placeat consectetur.
         </p>
+        {/* Members */}
         <div className="w-full flex flex-wrap lg:flex-no-wrap">
           {MemberData.map((member, index) => (
             <div className="w-1/2 sm:w-1/4 flex justify-center" key={index}>
