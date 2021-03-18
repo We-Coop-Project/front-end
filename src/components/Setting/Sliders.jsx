@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
+import { Hint } from "../UI/Hint";
 import { InputTab, NextArrow, BackArrow } from "../UI/index";
 
 const Sliders = () => {
@@ -26,13 +27,16 @@ const Sliders = () => {
     <div>
       <Slider {...settings} className="w-80 text-center">
         <div>
-          <InputTab
-            id="start"
-            type="text"
-            placeholder="Co-op Start Date"
-            onFocus={onFocusHandle}
-            onBlur={onBlurHandle}
-          />
+          <div className="flex">
+            <InputTab
+              id="start"
+              type="text"
+              placeholder="Co-op Start Date"
+              onFocus={onFocusHandle}
+              onBlur={onBlurHandle}
+            />
+            <Hint hint="Please enter your co-op start day on visa" />
+          </div>
           <InputTab
             id="end"
             type="text"

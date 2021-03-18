@@ -12,7 +12,7 @@ const Signin = () => {
   return (
     <div id="input" className="Home">
       <ImgContainer>
-        <img className="Img" src={inputImg} alt="contact" />
+        <img className="Illust" src={inputImg} alt="contact" />
       </ImgContainer>
       <ContentContainer>
         <Title title="Input" />

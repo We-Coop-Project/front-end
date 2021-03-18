@@ -8,24 +8,30 @@ import {
   InputTab,
   TextArea,
   SubmitBtn,
-  Modal,
 } from "../UI/index";
+import swal from "sweetalert";
 
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const submitForm = () => {
+  const submitForm = (e) => {
+    e.preventDefault();
     const isBlank = ValidateRequiredInput(name, email, message);
     const isValidEmail = ValidateEmailFormat(email);
 
     if (isBlank) {
-      // console.log(isBlank);
-      alert("Please fill out all the boxes.");
+      swal({
+        title: "Oops...",
+        text: "Please fill out all the boxes.",
+      });
       return false;
     } else if (!isValidEmail) {
-      alert("Invalid Email");
+      swal({
+        title: "Oops...",
+        text: "Please fill valid email address.",
+      });
       return false;
     } else {
       const payload = {
@@ -40,13 +46,21 @@ const Contact = () => {
           "Message: \n" +
           message,
       };
-      const url = process.env.REACT_APP_SLACK;
+      // const url = process.env.REACT_APP_SLACK;
+      const url = "";
 
       fetch(url, {
         method: "POST",
         body: JSON.stringify(payload),
       }).then(() => {
-        alert("thank you");
+        swal({
+          title: "Thank you!",
+          text: "We will get back to you as soon as possible.",
+          buttons: false,
+        });
+        setName("");
+        setEmail("");
+        setMessage("");
       });
     }
   };
@@ -54,33 +68,35 @@ const Contact = () => {
   return (
     <div id="contact" className="Home">
       <ImgContainer>
-        <img className="Img" src={contactImg} alt="contact" />
+        <img className="Illust" src={contactImg} alt="contact" />
       </ImgContainer>
       <ContentContainer>
         <Title title="Contact" />
-        <InputTab
-          id="name"
-          type="text"
-          placeholder="Your Name"
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />
-        <InputTab
-          id="email"
-          type="email"
-          placeholder="Your Email"
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-        />
-        <TextArea
-          id="message"
-          placeholder="Message"
-          onChange={(e) => {
-            setMessage(e.target.value);
-          }}
-        />
+        <form onSubmit={submitForm}>
+          <InputTab
+            id="name"
+            type="text"
+            placeholder="Your Name"
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
+          <InputTab
+            id="email"
+            type="email"
+            placeholder="Your Email"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+          <TextArea
+            id="message"
+            placeholder="Message"
+            onChange={(e) => {
+              setMessage(e.target.value);
+            }}
+          />
+        </form>
         <SubmitBtn onClick={submitForm} />
       </ContentContainer>
     </div>

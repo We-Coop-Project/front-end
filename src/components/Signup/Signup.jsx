@@ -6,7 +6,7 @@ const Signin = () => {
   return (
     <div id="signup" className="Home">
       <ImgContainer>
-        <img className="Img" src={signupImg} alt="signup" />
+        <img className="Illust" src={signupImg} alt="signup" />
       </ImgContainer>
       <ContentContainer>
         <Title title="Sign Up" />
