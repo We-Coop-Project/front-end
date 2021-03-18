@@ -12,6 +12,7 @@ const NavBar = () => {
     <MemberContext.Provider value={[isMember, setIsMember]}>
       <div className="NavBar">
         <Hamburger />
+
         <VersionBtn />
       </div>
     </MemberContext.Provider>
