@@ -1,27 +1,24 @@
 import React from "react";
 
 import Title from "../UI/Title";
-import Graph from "./Graph";
+import { TotalGraph, WeekGraph, WeekNonGraph } from "./Graphs";
 
 const User = () => {
-  let username = "Ami";
+  let username = "Ami"; // data require
 
   return (
     <div className="User border">
       <div className="hidden lg:block w-full lg:w-1/4 border-yellow-500 border-2">
-        <Graph />
-        <Graph />
+        <WeekGraph />
+        <WeekNonGraph />
       </div>
       <div className="w-full lg:w-2/4 text-center border-yellow-500 border-2">
         <Title title={`Hello, ${username}`} />
-        <Graph />
-        {/* <div className="border">
-          <Graph />
-        </div> */}
+        <TotalGraph />
       </div>
       <div className="hidden lg:block w-full lg:w-1/4 border-yellow-500 border-2">
-        <Graph />
-        <Graph />
+        <TotalGraph />
+        <TotalGraph />
       </div>
     </div>
   );
