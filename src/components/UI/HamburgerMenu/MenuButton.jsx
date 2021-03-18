@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 const MenuButton = (props) => {
   const [open, setOpen] = useState(props.open ? props.open : false);
-  const [color, setColor] = useState(props.color ? props.color : "black");
 
   useEffect(() => {
     if (props.open !== open) {
@@ -14,46 +13,9 @@ const MenuButton = (props) => {
     setOpen(!open);
   };
 
-  const styles = {
-    container: {
-      height: "32px",
-      width: "32px",
-      // display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      cursor: "pointer",
-      padding: "3px",
-    },
-
-    line: {
-      height: "2px",
-      width: "20px",
-      background: color,
-      transition: "all 0.2s ease",
-    },
-
-    lineTop: {
-      transform: open ? "rotate(45deg)" : "none",
-      transformOrigin: "top left",
-      marginBottom: "5px",
-    },
-
-    lineMiddle: {
-      opacity: open ? 0 : 1,
-      transform: open ? "translateX(-16px)" : "none",
-    },
-
-    lineBottom: {
-      transform: open ? "translateX(-1px) rotate(-45deg)" : "none",
-      transformOrigin: "top left",
-      marginTop: "5px",
-    },
-  };
-
   return (
     <div
-      style={styles.container}
+      className="hidden flex-col cursor-pointer p-1 lg:flex"
       onClick={
         props.onClick
           ? props.onClick
@@ -61,11 +23,22 @@ const MenuButton = (props) => {
               handleClick();
             }
       }
-      className="hidden lg:flex"
     >
-      <div style={{ ...styles.line, ...styles.lineTop }} />
-      <div style={{ ...styles.line, ...styles.lineMiddle }} />
-      <div style={{ ...styles.line, ...styles.lineBottom }} />
+      <div
+        className={`transition-all duration-200 ease h-1 w-6 bg-white transform${
+          open ? " rotate-45" : "-none"
+        } origin-top-left mb-1`}
+      />
+      <div
+        className={`transition-all duration-200 ease h-1 w-6 bg-white opacity${
+          open ? "-0" : "-100"
+        }`}
+      />
+      <div
+        className={`transition-all duration-200 ease h-1 w-6 bg-white transform${
+          open ? " -rotate-45" : "-none"
+        } origin-bottom-left mt-1`}
+      />
     </div>
   );
 };

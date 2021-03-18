@@ -1,17 +1,9 @@
 import React, { useState } from "react";
 
-/* MenuItem.jsx*/
 const MenuItem = (props) => {
-  // constructor(props){
-  //   super(props);
-  //   this.state = {
-  //     hover:false,
-  //   }
-  // }
   const [hover, setHover] = useState(false);
 
   const handleHover = () => {
-    //   this.setState({hover:!this.state.hover});
     setHover(!hover);
   };
 

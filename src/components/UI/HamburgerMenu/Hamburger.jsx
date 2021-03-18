@@ -15,34 +15,6 @@ const Hamburger = () => {
     setMenuOpen(false);
   };
 
-  // スタイリングはテイルウィンドであとでやる
-  const styles = {
-    container: {
-      // textAlign: "center",
-      // position: "absolute",
-      // top: "30%",
-      // left: "3%",
-      zIndex: "99",
-      // opacity: 0.9,
-      display: "flex",
-      alignItems: "center",
-      // background: "black",
-      // width: "100%",
-      // color: "white",
-      fontFamily: "Lobster",
-    },
-
-    // body: {
-    //   display: "flex",
-    //   flexDirection: "column",
-    //   alignItems: "center",
-    //   width: "100vw",
-    //   height: "100vh",
-    //   filter: menuOpen ? "blur(2px)" : null,
-    //   transition: "filter 0.5s ease",
-    // },
-  };
-
   // ----------------------------------
   const isMember = useContext(MemberContext);
 
@@ -73,12 +45,8 @@ const Hamburger = () => {
 
   return (
     <>
-      <div style={styles.container} className="absolute top-1/3 left-3">
-        <MenuButton
-          open={menuOpen}
-          onClick={() => handleMenuClick()}
-          color="white"
-        />
+      <div className="absolute top-1/3 left-3 z-50">
+        <MenuButton open={menuOpen} onClick={() => handleMenuClick()} />
       </div>
       <Menu open={menuOpen}>{menuItems}</Menu>
     </>
