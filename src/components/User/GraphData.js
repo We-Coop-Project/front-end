@@ -10,9 +10,9 @@ const remainTime = coopTime - totalCoopTime;
 const coopPercent = Math.round((totalCoopTime / coopTime) * 1000) / 10;
 const remainPercent = Math.round((remainTime / coopTime) * 1000) / 10;
 // week coop hours and percentage
-const weekTotalCoopTime = 8.5; // data required
+const weekTotalCoopTime = 10.0; // data required
 const weekCoopTime = 20.0; // data required (20 or 40)
-const weekTotalNonCoopTime = 16.0; // data required
+const weekTotalNonCoopTime = 15.0; // data required
 const weekNonCoopTime = 20.0;
 const weekCoopRemainTime = weekCoopTime - weekTotalCoopTime;
 const weekNonCoopRemainTime = weekNonCoopTime - weekTotalNonCoopTime;
@@ -78,7 +78,7 @@ const baseOptions = {
 };
 
 const newBaseData = { ...baseData };
-const newBaseOptions = { ...baseOptions };
+// const newBaseOptions = { ...baseOptions };
 // const doughnutlabel = newBaseOptions.plugins.doughnutlabel.labels;
 
 // const baseDataFunc = (done, remain) => {
@@ -87,15 +87,15 @@ const newBaseOptions = { ...baseOptions };
 // };
 
 // datas
-export const totalCoopData = () => {
+const totalCoopData = () => {
   newBaseData.datasets[0].data = [coopPercent, remainPercent];
   return newBaseData;
 };
-export const weekCoopData = () => {
+const weekCoopData = () => {
   newBaseData.datasets[0].data = [weekCoopPercent, weekCoopRemainPercent];
   return newBaseData;
 };
-export const weekNonCoopData = () => {
+const weekNonCoopData = () => {
   newBaseData.datasets[0].data = [weekNonCoopPercent, weekNonCoopRemainPercent];
   return newBaseData;
 };
@@ -110,21 +110,40 @@ export const weekNonCoopData = () => {
 
 //options
 
-export const totalOptions = () => {
-  newBaseOptions.plugins.doughnutlabel.labels[0].text = duration;
-  newBaseOptions.plugins.doughnutlabel.labels[1].text = `${coopPercent} %`;
-  newBaseOptions.plugins.doughnutlabel.labels[2].text = `${coopTime} hrs`;
+const totalOptions = () => {
+  const newBaseOptions = { ...baseOptions };
+  const doughnutlabel = newBaseOptions.plugins.doughnutlabel.labels;
+  doughnutlabel[0].text = duration;
+  doughnutlabel[1].text = `${coopPercent} %`;
+  doughnutlabel[2].text = `${coopTime} hrs`;
   return newBaseOptions;
 };
-export const weekOptions = () => {
-  newBaseOptions.plugins.doughnutlabel.labels[0].text = "2";
-  newBaseOptions.plugins.doughnutlabel.labels[1].text = `${weekCoopPercent} %`;
-  newBaseOptions.plugins.doughnutlabel.labels[2].text = `${weekTotalCoopTime} hrs`;
+const weekOptions = () => {
+  const newBaseOptions = { ...baseOptions };
+  const doughnutlabel = newBaseOptions.plugins.doughnutlabel.labels;
+  doughnutlabel[0].text = "2";
+  doughnutlabel[1].text = `${weekCoopPercent} %`;
+  doughnutlabel[2].text = `${weekTotalCoopTime} hrs`;
+  //   doughnutlabel[1].font.size = 20;
+  //   doughnutlabel[2].font.size = 16;
   return newBaseOptions;
 };
-export const weekNonOptions = () => {
-  newBaseOptions.plugins.doughnutlabel.labels[0].text = "3";
-  newBaseOptions.plugins.doughnutlabel.labels[1].text = `${weekNonCoopPercent} %`;
-  newBaseOptions.plugins.doughnutlabel.labels[2].text = `${weekNonCoopTime} hrs`;
+const weekNonOptions = () => {
+  const newBaseOptions = { ...baseOptions };
+  const doughnutlabel = newBaseOptions.plugins.doughnutlabel.labels;
+  console.log(newBaseOptions);
+  doughnutlabel[0].text = "3";
+  doughnutlabel[1].text = `${weekNonCoopPercent} %`;
+  doughnutlabel[2].text = `${weekNonCoopTime} hrs`;
+  console.log(newBaseOptions);
   return newBaseOptions;
+};
+
+export {
+  totalCoopData,
+  weekCoopData,
+  weekNonCoopData,
+  totalOptions,
+  weekOptions,
+  weekNonOptions,
 };
