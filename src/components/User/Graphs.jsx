@@ -14,7 +14,7 @@ import {
 const TotalGraph = () => {
   return (
     <div className="border">
-      <Doughnut data={totalCoopData} options={totalOptions()} />
+      <Doughnut data={totalCoopData()} options={totalOptions()} />
     </div>
   );
 };
@@ -22,7 +22,7 @@ const TotalGraph = () => {
 const WeekGraph = () => {
   return (
     <div className="w-full border">
-      <Doughnut data={weekCoopData} options={weekOptions()} />
+      <Doughnut data={() => weekCoopData()} options={() => weekOptions()} />
     </div>
   );
 };
@@ -30,7 +30,7 @@ const WeekGraph = () => {
 const WeekNonGraph = () => {
   return (
     <div className="border">
-      <Doughnut data={weekNonCoopData} options={weekNonOptions()} />
+      <Doughnut data={weekNonCoopData()} options={weekNonOptions()} />
     </div>
   );
 };

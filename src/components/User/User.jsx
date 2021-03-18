@@ -17,8 +17,8 @@ const User = () => {
         <TotalGraph />
       </div>
       <div className="hidden lg:block w-full lg:w-1/4 border-yellow-500 border-2">
-        <TotalGraph />
-        <TotalGraph />
+        {/* <TotalGraph />
+        <TotalGraph /> */}
       </div>
     </div>
   );
