@@ -23,18 +23,12 @@ const App = () => {
       <div className="App">
         <Switch>
           <Route path="/" exact component={Home}></Route>
-          <Route path="/user" exact component={Home}></Route>
           <Route path="/input" exact component={Home}></Route>
           <Route path="/setting" exact component={Home}></Route>
           <Route path="/signout" exact component={Home}></Route>
-          <Route path="/aboutus" exact component={Home}></Route>
           <Route path="/contact" exact component={Home}></Route>
           <Route path="/signout" exact component={Home}></Route>
-        </Switch>
-        <Switch>
           <Route path="/aboutus" component={Aboutus}></Route>
-        </Switch>
-        <Switch>
           <Route path="/user" component={User}></Route>
         </Switch>
       </div>

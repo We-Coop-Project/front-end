@@ -70,7 +70,7 @@
     @apply w-full rounded-full border-4 border-blue-500 dark:border-blue-700 my-2 sm:my-4;
   }
   .Img {
-    @apply object-contain h-full lg:h-screen w-full lg:w-auto border;
+    @apply object-cover h-full lg:h-screen w-full lg:w-auto border;
   }
   .Illust {
     @apply object-contain border h-5/6
