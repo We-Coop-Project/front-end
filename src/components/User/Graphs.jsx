@@ -9,7 +9,7 @@ import {
   weekOptions,
   weekNonCoopData,
   weekNonOptions,
-} from "./GraphData";
+} from "./GraphDataOld";
 
 const TotalGraph = () => {
   const [data, setData] = useState();
@@ -62,4 +62,4 @@ const WeekNonGraph = () => {
   );
 };
 
-export { TotalGraph, WeekGraph, WeekNonGraph };
+// export { TotalGraph, WeekGraph, WeekNonGraph };
