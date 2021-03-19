@@ -8,7 +8,7 @@ import {
   SubmitBtn,
 } from "../UI/index";
 
-const Signin = () => {
+const Input = () => {
   return (
     <div id="input" className="Home">
       <ImgContainer>
@@ -30,4 +30,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Input;
