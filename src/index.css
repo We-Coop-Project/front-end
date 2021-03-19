@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply font-sanspro text-white dark:text-gray-400 bg-primary dark:bg-secondary;
+    @apply font-sanspro text-white dark:text-gray-400 bg-primary dark:bg-secondary select-none;
   }
   /* font-size */
   h1 {
@@ -34,7 +34,10 @@
     @apply text-xs sm:text-sm xl:text-base;
   }
   li {
-    @apply text-base sm:text-lg xl:text-xl;
+    @apply text-xs sm:text-sm xl:text-base;
+  }
+  button {
+    @apply cursor-pointer focus:outline-none;
   }
 }
 
@@ -47,13 +50,10 @@
     @apply h-16 w-full flex items-center justify-end fixed top-0 right-0 px-4 border;
   }
   .ContentContainer {
-    @apply h-1/2 lg:h-full w-full lg:w-1/2 flex items-center justify-center border;
+    @apply h-1/2 lg:h-full w-full lg:w-1/2 flex flex-col items-center justify-center border;
   }
   .ImgContainer {
     @apply h-1/2 lg:h-full w-full lg:w-1/2 flex items-center justify-center border;
-  }
-  .Img {
-    @apply h-full lg:h-screen w-full lg:w-auto object-cover border;
   }
   /* Pages */
   .Home {
@@ -68,5 +68,52 @@
   /* Aboutus Component */
   .MemberImg {
     @apply w-full rounded-full border-4 border-blue-500 dark:border-blue-700 my-2 sm:my-4;
+  }
+  .Img {
+    @apply object-contain h-full lg:h-screen w-full lg:w-auto border;
+  }
+  .Illust {
+    @apply object-contain border h-5/6
+    mt-20 lg:mt-0;
+  }
+  .Button {
+    @apply bg-white text-primary dark:text-secondary
+    rounded-lg text-center py-2 lg:py-3 my-3 w-64 lg:w-72;
+  }
+  .SubmitBtn {
+    @apply bg-white text-primary dark:text-secondary
+    hover:bg-gray-300
+    rounded-lg text-center py-1 my-2 lg:my-3 w-20;
+  }
+  .Input {
+    @apply bg-white text-primary dark:text-secondary
+    placeholder-primary dark:placeholder-secondary focus:placeholder-transparent focus:outline-none
+    rounded-lg text-center py-3 my-3 w-64 lg:w-72;
+  }
+  .swal-title {
+    @apply text-primary dark:text-secondary;
+  }
+  .swal-text {
+    @apply text-primary dark:text-secondary;
+  }
+  .swal-button {
+    @apply bg-primary dark:bg-secondary text-white dark:text-gray-400
+    hover:bg-secondary dark:hover:bg-primary inset-0 m-auto;
+  }
+  .hintContainer {
+    @apply inline-flex ml-3;
+  }
+  .hintInner {
+    @apply flex justify-center align-middle
+    rounded-lg border-white w-6 h-6 cursor-pointer;
+  }
+  .popupContainer {
+    @apply absolute left-0 bg-white text-primary dark:text-secondary
+    border-primary dark:border-secondary
+    flex justify-center rounded-lg p-2 w-48;
+  }
+
+  .slick-slider {
+    @apply outline-none;
   }
 }

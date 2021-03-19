@@ -2,19 +2,18 @@
 
 const FontCheck = () => {
   return (
-    <div className="text-center">
-      <h1>Hello World</h1>
-      <h2>Hello World</h2>
-      <h3>Hello World</h3>
-      <h4>Hello World</h4>
-      <h5>Hello World</h5>
-      <h6>Hello World</h6>
-      <p>Hello World</p>
-      <small>Hello World</small>
-      <ul>
-        <li>This is li</li>
-        <li>Hello World</li>
-      </ul>
+    <div className="text-center ">
+      <h1>How to use We CO-OP</h1>
+      <br />
+      <h3>
+        This app manages the co-op's time calculation just by entering your
+        school information.
+      </h3>
+      <br />
+      <h3>
+        This app manages the co-op's time calculation just by entering your
+        school information.
+      </h3>
     </div>
   );
 };
