@@ -25,8 +25,8 @@ const Sliders = () => {
 
   return (
     <div>
-      <Slider {...settings} className="w-80 text-center">
-        <div>
+      <Slider {...settings} className="w-80 text-center flex">
+        <div className="focus:outline-none">
           <div className="flex">
             <InputTab
               id="start"

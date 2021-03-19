@@ -89,15 +89,19 @@
     hover:bg-secondary dark:hover:bg-primary inset-0 m-auto;
   }
   .hintContainer {
-    @apply relative inline-flex ml-3;
+    @apply inline-flex ml-3;
   }
   .hintInner {
     @apply flex justify-center align-middle
     rounded-lg border-white w-6 h-6 cursor-pointer;
   }
   .popupContainer {
-    @apply absolute bg-white text-primary dark:text-secondary
+    @apply absolute left-0 bg-white text-primary dark:text-secondary
     border-primary dark:border-secondary
     flex justify-center rounded-lg p-2 w-48;
+  }
+
+  .slick-slider {
+    @apply outline-none;
   }
 }
