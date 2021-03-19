@@ -1,8 +1,17 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import NavBar from "./components/UI/NavBar";
 import Home from "./components/Home/Home";
+import Signin from "./components/Signin/Signin";
+import Signup from "./components/Signup/Signup";
+import Contact from "./components/Contact/Contact";
+import Input from "./components/Input/Input";
+import Setting from "./components/Setting/Setting";
+import Sliders from "./components/Setting/Sliders";
+import Modal from "./components/UI/Modal";
 
 const App = () => {
   return (
