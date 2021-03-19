@@ -3,6 +3,7 @@ import { MemberContext } from "../NavBar";
 import { Menu, MenuButton, MenuItem } from "./index";
 import "../HamburgerMenu/hamburger.css";
 import { Link } from "react-router-dom";
+import VersionBtn from "../VersionBtn";
 
 const Hamburger = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -49,6 +50,9 @@ const Hamburger = () => {
         <MenuButton open={menuOpen} onClick={() => handleMenuClick()} />
       </div>
       <Menu open={menuOpen}>{menuItems}</Menu>
+      {/* <li>
+        <VersionBtn />
+      </li> */}
     </>
   );
 };

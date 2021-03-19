@@ -14,7 +14,8 @@ const NavBar = () => {
     <MemberContext.Provider value={[isMember, setIsMember]}>
       <div className="NavBar">
         <Hamburger />
-        <NonHamburger />
+        {/* <NonHamburger /> */}
+
         <VersionBtn />
       </div>
     </MemberContext.Provider>
