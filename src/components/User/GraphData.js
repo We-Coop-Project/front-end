@@ -69,7 +69,7 @@ const baseOptions = {
           text: "",
           color: gray100,
           font: {
-            size: 12,
+            size: 16,
           },
         },
         {

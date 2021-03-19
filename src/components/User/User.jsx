@@ -19,7 +19,7 @@ const User = () => {
   return (
     <div className="User border">
       <div className="h-3/4 w-full flex justify-center border-4">
-        <div className="hidden lg:flex w-full lg:w-1/4 lg:flex-wrap lg:content-between border">
+        {/* <div className="hidden lg:flex w-full lg:w-1/4 lg:flex-wrap lg:content-between border">
           <div className="w-full">
             <h6 className="w-full text-center">{thisWeek}</h6>
             <GraphModel
@@ -39,9 +39,10 @@ const User = () => {
               hours={weekTotalNonCoopTime}
             />
           </div>
-        </div>
-        {/* <div className="w-3/4 flex flex-wrap items-center border"> */}
-        <div className="w-full lg:w-2/4 flex flex-wrap items-center border">
+        </div> */}
+
+        <div className="w-3/4 flex flex-wrap items-center border">
+          {/* <div className="w-full lg:w-2/4 flex flex-wrap items-center border"> */}
           <div className="w-full text-center border">
             <Title title={`Hello, ${username}`} />
           </div>
@@ -54,8 +55,13 @@ const User = () => {
               hours={totalCoopTime}
             />
           </div>
+
+          <div className="w-full flex justify-center border-red-500 border-2">
+            <select className="h-10 w-2/3 border-red-500 border-2"></select>
+          </div>
         </div>
-        <div className="hidden lg:flex w-full lg:w-1/4 lg:flex-wrap lg:content-between border">
+
+        {/* <div className="hidden lg:flex w-full lg:w-1/4 lg:flex-wrap lg:content-between border">
           <div className="w-full">
             <h6 className="w-full text-center">{thisWeek}</h6>
             <GraphModel
@@ -75,7 +81,7 @@ const User = () => {
               hours={weekTotalNonCoopTime}
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
