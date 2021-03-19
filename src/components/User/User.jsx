@@ -9,16 +9,24 @@ const User = () => {
   return (
     <div className="User border">
       <div className="hidden lg:block w-full lg:w-1/4 border-yellow-500 border-2">
-        <WeekGraph />
-        <WeekNonGraph />
+        <div>
+          <WeekGraph />
+        </div>
+        <div className="mt-8">
+          <WeekNonGraph />
+        </div>
       </div>
       <div className="w-full lg:w-2/4 text-center border-yellow-500 border-2">
         <Title title={`Hello, ${username}`} />
         <TotalGraph />
       </div>
       <div className="hidden lg:block w-full lg:w-1/4 border-yellow-500 border-2">
-        {/* <TotalGraph />
-        <TotalGraph /> */}
+        {/* <div>
+          <WeekGraph />
+        </div>
+        <div className="mt-8">
+          <WeekNonGraph />
+        </div> */}
       </div>
     </div>
   );
