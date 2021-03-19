@@ -15,7 +15,7 @@ const MenuButton = (props) => {
 
   return (
     <div
-      className="hidden flex-col cursor-pointer p-1 lg:flex"
+      className=" flex-col cursor-pointer p-1 lg:hidden"
       onClick={
         props.onClick
           ? props.onClick

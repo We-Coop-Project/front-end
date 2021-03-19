@@ -34,7 +34,7 @@
     @apply text-xs sm:text-sm xl:text-base;
   }
   li {
-    @apply text-base sm:text-lg xl:text-xl;
+    @apply text-xs sm:text-sm xl:text-base;
   }
 }
 

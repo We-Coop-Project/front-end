@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const Menu = (props) => {
   const [open, setOpen] = useState(props.open ? props.open : false);
+  // const [open, setOpen] = useState(true);
 
   useEffect(() => {
     if (props.open !== open) {
@@ -9,32 +10,16 @@ const Menu = (props) => {
     }
   }, [props]);
 
-  const styles = {
-    container: {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      // height: open ? "100%" : 0,
-      height: open ? "100vh" : 0,
-      width: "100vw",
-      // width: "50vw",
-      display: "flex",
-      flexDirection: "column",
-      // background: "black",
-      background: "rgba(0, 0, 0, .6)",
-      opacity: 0.95,
-      color: "#fafafa",
-      transition: "height 0.3s ease",
-      // zIndex: 2,
-      //   zIndex: 99,
-    },
-    menuList: {
-      paddingTop: "3rem",
-    },
-  };
   return (
-    <div style={styles.container}>
-      {open ? <div style={styles.menuList}>{props.children}</div> : null}
+    <div
+      className={`absolute top-0 left-0 h${
+        open ? "-screen" : "-0"
+      } w-screen bg-black opacity-75 `}
+      // display: "flex",
+      // flexDirection: "column",
+      // color: "#fafafa",
+    >
+      {open ? <div className="pt-16">{props.children}</div> : null}
     </div>
   );
 };

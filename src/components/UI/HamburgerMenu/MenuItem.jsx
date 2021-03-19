@@ -9,35 +9,25 @@ const MenuItem = (props) => {
 
   const styles = {
     container: {
-      opacity: 0,
       animation: "1s appear forwards",
       animationDelay: props.delay,
     },
     menuItem: {
-      fontFamily: `'Open Sans', sans-serif`,
-      fontSize: "1.2rem",
-      padding: "1rem 0",
-      margin: "0 5%",
-      cursor: "pointer",
-      color: hover ? "gray" : "#fafafa",
-      transition: "color 0.2s ease-in-out",
       animation: "0.5s slideIn forwards",
       animationDelay: props.delay,
-      textAlign: "center",
     },
     line: {
-      width: "90%",
-      height: "1px",
-      background: "gray",
-      margin: "0 auto",
       animation: "0.5s shrink forwards",
       animationDelay: props.delay,
     },
   };
 
   return (
-    <div style={styles.container}>
+    <div className="opacity-0" style={styles.container}>
       <div
+        className={`text-2xl p-4 ${
+          hover ? "text-gray-400" : "text-white"
+        } text-center`}
         style={styles.menuItem}
         onMouseEnter={() => {
           handleHover();
@@ -49,7 +39,7 @@ const MenuItem = (props) => {
       >
         {props.children}
       </div>
-      <div style={styles.line} />
+      <div className="h-1 bg-white mx-auto" style={styles.line} />
     </div>
   );
 };

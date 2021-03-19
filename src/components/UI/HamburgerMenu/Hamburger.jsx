@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { MemberContext } from "../NavBar";
 import { Menu, MenuButton, MenuItem } from "./index";
 import "../HamburgerMenu/hamburger.css";
