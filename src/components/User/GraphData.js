@@ -108,4 +108,12 @@ const weekNonCoopData = () => {
   return baseData;
 };
 
-export { baseOptions, totalCoopData, weekCoopData, weekNonCoopData };
+export {
+  totalCoopTime,
+  weekTotalCoopTime,
+  weekTotalNonCoopTime,
+  baseOptions,
+  totalCoopData,
+  weekCoopData,
+  weekNonCoopData,
+};
