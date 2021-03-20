@@ -46,7 +46,8 @@ const Hamburger = () => {
 
   return (
     <>
-      <div className="absolute top-1/3 left-3 z-50">
+      <div className="">
+        {/*  もし左上なら、absolute top-1/3 left-3 z-50 */}
         <MenuButton open={menuOpen} onClick={() => handleMenuClick()} />
       </div>
       <Menu open={menuOpen}>{menuItems}</Menu>
