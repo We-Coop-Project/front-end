@@ -16,6 +16,31 @@ const User = () => {
   let username = "Ami"; // data
   let thisWeek = "4th week, March"; // data
 
+  console.log(coopData);
+
+  const selectHandler = (e) => {
+    const value = e.target.value;
+    switch (value) {
+      case "TotalCoop":
+        console.log("1");
+        break;
+      case "WeekCoop":
+        console.log("2");
+        break;
+      case "WeekNonCoop":
+        break;
+      case "FirstCoop":
+        break;
+      case "SecondCoop":
+        break;
+      case "ThirdCoop":
+        break;
+
+      default:
+        break;
+    }
+  };
+
   return (
     <div className="User border">
       <div className="h-3/4 w-full flex justify-center border-4">
@@ -57,7 +82,17 @@ const User = () => {
           </div>
 
           <div className="w-full flex justify-center border-red-500 border-2">
-            <select className="h-10 w-2/3 border-red-500 border-2"></select>
+            <select
+              onChange={selectHandler}
+              className="h-8 w-2/3 border-red-500 border-2"
+            >
+              <option value="TotalCoop">Total Coop Time</option>
+              <option value="WeekCoop">Week Coop Time</option>
+              <option value="WeekNonCoop">Week Non Coop Time</option>
+              <option value="FirstCoop">First Company Coop Time</option>
+              <option value="SecondCoop">Second Company Coop Time</option>
+              <option value="ThirdCoop">Third Company Coop Time</option>
+            </select>
           </div>
         </div>
 
