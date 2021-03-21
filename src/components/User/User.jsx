@@ -10,7 +10,6 @@ import ThirdCoop from "./Graphs/ThirdCoop";
 
 const User = () => {
   let username = "Ami"; // data
-  // let thisWeek = "4th week, March"; // data
 
   const [graph, setGraph] = useState(<TotalCoop />);
 
@@ -36,23 +35,24 @@ const User = () => {
         setGraph(<ThirdCoop />);
         break;
       default:
+        setGraph(<TotalCoop />);
         break;
     }
   };
 
   return (
     <div className="User">
-      <div className="w-full flex justify-center border">
-        <div className="w-full lg:w-3/4 flex flex-wrap items-center border-4">
-          <div className="w-full text-center border">
+      <div className="w-full flex justify-center">
+        <div className="w-full lg:w-3/4 flex flex-wrap items-center">
+          <div className="w-full text-center">
             <Title title={`Hello, ${username}`} />
           </div>
-          <div className="w-full border">{graph}</div>
+          <div className="w-full">{graph}</div>
 
-          <div className="w-full flex justify-center mt-4 border">
+          <div className="w-full flex justify-center mt-6">
             <select
               onChange={selectHandler}
-              className="h-6 sm:h-8 w-1/3 text-xs border-red-500 border"
+              className="h-8 w-1/2 text-xs text-gray-400 rounded px-2"
             >
               <option value="TotalCoop">Total Coop Time</option>
               <option value="WeekCoop">Week Coop Time</option>

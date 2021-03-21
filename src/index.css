@@ -63,7 +63,7 @@
     @apply h-full w-5/6 lg:w-2/3 flex items-center justify-center;
   }
   .User {
-    @apply h-full w-5/6 flex items-center justify-center;
+    @apply h-full w-full sm:w-5/6 flex items-center justify-center;
   }
   /* Aboutus Component */
   .MemberImg {
