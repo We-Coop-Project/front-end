@@ -1,23 +1,6 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-// const GraphData = (props) => {
-//   const [data, setData] = useState({});
-
-//   // test
-//   let uid = 123456;
-
-//   useEffect(() => {
-//     const getData = async () => {
-//       const url = `https://we-coop-staging.herokuapp.com/api/v2/user_status/${uid}`;
-//       const resp = await axios.get(url);
-//       setData(resp.data);
-//       console.log(resp.data);
-//     };
-//     getData();
-//   }, [props]);
-// };
-
+// variables
 let coopPercent;
 let remainPercent;
 let weekCoopPercent;
@@ -33,8 +16,9 @@ let thirdCoopRemainPercent;
 let coopStartDate;
 let coopEndDate;
 
+// get api data
 const getData = async () => {
-  // test
+  // test uid
   let uid = 123456;
   const url = `https://we-coop-staging.herokuapp.com/api/v2/user_status/${uid}`;
   const res = await axios.get(url);
@@ -42,20 +26,21 @@ const getData = async () => {
 };
 
 getData().then((res) => {
-  const companies = res.company_status;
-
   // total coop hours and percentage
   let totalCoopTime = 0;
   let coopTime = res.coop_hours;
-
-  for (let company of companies) {
-    let workingTime = parseFloat(company.working_time);
-    totalCoopTime += workingTime;
-  }
-
   let remainTime = coopTime - totalCoopTime;
   coopPercent = Math.round((totalCoopTime / coopTime) * 1000) / 10;
   remainPercent = Math.round((remainTime / coopTime) * 1000) / 10;
+
+  const companies = res.company_status;
+  for (let company of companies) {
+    let hire_type = company.hire_type;
+    if (hire_type === "CO") {
+      let workingTime = parseFloat(company.working_time);
+      totalCoopTime += workingTime;
+    }
+  }
 
   console.log(coopTime);
   console.log(totalCoopTime);
@@ -66,16 +51,19 @@ getData().then((res) => {
   // week coop hours and percentage
   let weekTotalCoopTime = res.week_coop_working_hours;
   let weekTotalNonCoopTime = res.week_non_coop_working_hours;
+
   let weekCoopTime;
   let weekNonCoopTime;
-
   let firstCoopTime = 0;
   let secondCoopTime = 0;
   let thirdCoopTime = 0;
 
   for (let company of companies) {
     let hire_type = company.hire_type;
-    if (!hire_type === "OT") {
+    if (!hire_type == "OT") {
+      // let workingTime = parseFloat(company.working_time);
+      // totalCoopTime += workingTime;
+      // console.log(totalCoopTime);
       weekCoopTime = 40.0;
       weekNonCoopTime = 0;
       firstCoopTime = res.company_status[0].working_time;
@@ -86,8 +74,11 @@ getData().then((res) => {
       weekNonCoopTime = 20.0;
     }
   }
-
-  // coop hours and percentage by company
+  // console.log(coopTime);
+  console.log(totalCoopTime);
+  // console.log(remainTime);
+  // console.log(coopPercent);
+  // console.log(remainPercent);
 
   let weekCoopRemainTime = weekCoopTime - weekTotalCoopTime;
   let weekNonCoopRemainTime = weekNonCoopTime - weekTotalNonCoopTime;
@@ -99,6 +90,7 @@ getData().then((res) => {
   weekNonCoopRemainPercent =
     Math.round((weekNonCoopRemainTime / weekNonCoopTime) * 1000) / 10;
 
+  // coop hours and percentage by company
   let firstCoopRemainTime = totalCoopTime - firstCoopTime;
   let secondCoopRemainTime = totalCoopTime - secondCoopTime;
   let thirdCoopRemainTime = totalCoopTime - thirdCoopTime;
@@ -113,9 +105,9 @@ getData().then((res) => {
     Math.round((thirdCoopRemainTime / totalCoopTime) * 1000) / 10;
 
   // coop duration
-  coopStartDate = "2021-09-01"; // data
-  coopEndDate = "2022-08-31"; // data
-  // let duration = `${coopStartDate} - ${coopEndDate}`;
+  coopStartDate = res.coop_start_date;
+  coopEndDate = res.coop_end_date;
+  let duration = `${coopStartDate} - ${coopEndDate}`;
 });
 
 // colors
