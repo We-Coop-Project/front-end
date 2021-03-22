@@ -24,15 +24,14 @@ const Hamburger = () => {
     : ["", "signin", "singup", "aboutus", "contact"];
 
   const menu = isMember
-    ? ["Home", "User", "Input", "Setting", "Sign Out", "AboutUS", "Contact"]
-    : ["Home", "Sign in", "Sing up", "AboutUS", "Contact"];
+    ? ["Home", "User", "Input", "Setting", "Sign Out", "AboutUs", "Contact"]
+    : ["Home", "Sign in", "Sing up", "AboutUs", "Contact"];
   // ----------------------------------
 
   const menuItems = menu.map((val, index) => {
     return (
-      <Link to={`/${pathArray[index]}`}>
+      <Link to={`/${pathArray[index]}`} key={index}>
         <MenuItem
-          key={index}
           delay={`${index * 0.1}s`}
           onClick={() => {
             handleLinkClick();

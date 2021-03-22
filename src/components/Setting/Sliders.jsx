@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Slider from "react-slick";
-import { Hint } from "../UI/Hint";
 import { InputTab, NextArrow, BackArrow } from "../UI/index";
+import ReactTooltip from "react-tooltip";
 
 const Sliders = () => {
   const settings = {
@@ -13,58 +13,71 @@ const Sliders = () => {
     slidesToScroll: 1,
   };
 
-  const onFocusHandle = (e) => {
+  const onFocusHandle = useCallback((e) => {
     e.preventDefault();
     e.target.type = "date";
-  };
+  }, []);
 
-  const onBlurHandle = (e) => {
+  const onBlurHandle = useCallback((e) => {
     e.preventDefault();
     e.target.type = "text";
-  };
+  }, []);
 
   return (
     <div>
       <Slider {...settings} className="w-80 text-center flex">
         <div className="focus:outline-none">
-          <div className="flex">
-            <InputTab
-              id="start"
-              type="text"
-              placeholder="Co-op Start Date"
-              onFocus={onFocusHandle}
-              onBlur={onBlurHandle}
-            />
-            <Hint hint="Please enter your co-op start day on visa" />
-          </div>
+          <ReactTooltip id="for-start-date" efect="solid" place="bottom">
+            When did you start your co-op job?
+          </ReactTooltip>
           <InputTab
-            id="end"
-            type="text"
-            placeholder="Co-op End Date"
-            onFocus={onFocusHandle}
-            onBlur={onBlurHandle}
-          />
-          <InputTab id="duration" type="number" placeholder="Co-op Hours" />
-        </div>
-        <div>
-          <InputTab id="company" type="text" placeholder="Company name" />
-          <InputTab id="isCoop" type="text" placeholder="Co-op Job?" />
-        </div>
-        <div>
-          <InputTab
-            id="start"
+            id="start-date"
             type="text"
             placeholder="Co-op Start Date"
             onFocus={onFocusHandle}
             onBlur={onBlurHandle}
+            data-tip
+            dataFor="for-start-date"
+            dataEvent="focus"
+            dataEventOff="blur"
+            autoComplete="off"
           />
+
+          <ReactTooltip id="for-end-date" efect="solid" place="bottom">
+            When will you finish your co-op job?
+          </ReactTooltip>
           <InputTab
-            id="end"
+            id="end-date"
             type="text"
+            min="0"
             placeholder="Co-op End Date"
+            oninput="this.value = Math.abs(this.value)"
             onFocus={onFocusHandle}
             onBlur={onBlurHandle}
+            data-tip
+            dataFor="for-end-date"
+            dataEvent="focus"
+            dataEventOff="blur"
+            autoComplete="off"
           />
+
+          <ReactTooltip id="for-coop-hours" efect="solid" place="bottom">
+            How many hours do you need to work as a co-op?
+          </ReactTooltip>
+          <InputTab
+            id="duration"
+            type="number"
+            placeholder="Co-op Hours"
+            data-tip
+            dataFor="for-coop-hours"
+            dataEvent="focus"
+            dataEventOff="blur"
+            autoComplete="off"
+          />
+        </div>
+        <div>
+          <InputTab id="company" type="text" placeholder="Company name" />
+          <InputTab id="isCoop" type="text" placeholder="Co-op Job?" />
         </div>
       </Slider>
     </div>

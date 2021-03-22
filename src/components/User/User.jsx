@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import Title from "../UI/Title";
 import GraphModel from "./GraphModel";
@@ -11,9 +11,12 @@ import {
   weekNonCoopData,
   baseOptions,
 } from "./GraphData";
+import { UserContext } from "../../context/User-context";
 
 const User = () => {
-  let username = "Ami"; // data
+  const [userName, setUserName] = useContext(UserContext);
+
+  // let username = "Ami"; // data
   let thisWeek = "4th week, March"; // data
 
   return (
@@ -43,7 +46,7 @@ const User = () => {
         {/* <div className="w-3/4 flex flex-wrap items-center border"> */}
         <div className="w-full lg:w-2/4 flex flex-wrap items-center border">
           <div className="w-full text-center border">
-            <Title title={`Hello, ${username}`} />
+            <Title title={`Hello, ${userName}`} />
           </div>
           <div className="w-full border">
             <GraphModel
