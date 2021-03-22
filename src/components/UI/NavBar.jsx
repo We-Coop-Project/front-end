@@ -2,7 +2,7 @@ import React, { createContext, Provider, useState } from "react";
 import VersionBtn from "./VersionBtn";
 import Hamburger from "./HamburgerMenu/Hamburger";
 // import MenuItem from "./HamburgerMenu/MenuItem";
-import NonHamburger from "./HamburgerMenu/NonHamburger";
+// import NonHamburger from "./HamburgerMenu/NonHamburger";
 import Logo from "../../assets/img/logo01.png";
 
 export const MemberContext = createContext(false, () => {});
