@@ -11,8 +11,8 @@ const NonHamburger = () => {
     : ["", "signin", "singup", "aboutus", "contact"];
 
   const menu = isMember
-    ? ["Home", "User", "Input", "Setting", "Sign Out", "AboutUS", "Contact"]
-    : ["Home", "Sign in", "Sing up", "AboutUS", "Contact"];
+    ? ["Home", "User", "Input", "Setting", "Sign Out", "AboutUs", "Contact"]
+    : ["Home", "Sign in", "Sing up", "AboutUs", "Contact"];
   // ----------------------------------
 
   const menuItems = menu.map((val, index) => {

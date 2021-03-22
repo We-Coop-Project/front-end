@@ -9,16 +9,24 @@ export const Hint = (props) => {
     if (ref.current) ref.current.focus();
   });
 
+  useEffect(() => {
+    if (props.onInputFocus) {
+      setShowPopup(true);
+    } else {
+      setShowPopup(false);
+    }
+  }, [props.onInputFocus]);
+
   return (
     <div className="hintContainer">
-      <div className="hintInner" onClick={() => setShowPopup(true)}>
+      {/* <div className="hintInner" onClick={() => setShowPopup(true)}>
         ?
-      </div>
+      </div> */}
       {showPopup && (
         <div
           className="popupContainer"
           ref={ref}
-          onBlur={() => setShowPopup(false)}
+          onBlur={() => setShowPopup(true)}
           tabIndex={0}
         >
           {props.hint}
