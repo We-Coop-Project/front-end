@@ -11,6 +11,7 @@ import ThirdCoop from "./Graphs/ThirdCoop";
 const User = () => {
   let username = "Ami"; // data
 
+  console.log("this is user.jsx");
   const [graph, setGraph] = useState(<TotalCoop />);
 
   const selectHandler = (e) => {

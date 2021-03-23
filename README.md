@@ -8,5 +8,5 @@
 
 - React.js
 - Hooks
-- Postgresql
+- PostgreSQL
 - Firebase

@@ -1,24 +1,31 @@
 import axios from "axios";
 
 // variables
-let coopPercent;
-let remainPercent;
-let weekCoopPercent;
-let weekCoopRemainPercent;
-let weekNonCoopPercent;
-let weekNonCoopRemainPercent;
-let firstCoopPercent;
-let secondCoopPercent;
-let thirdCoopPercent;
-let firstCoopRemainPercent;
-let secondCoopRemainPercent;
-let thirdCoopRemainPercent;
-let coopStartDate;
-let coopEndDate;
+let totalCoopTime = 0;
+let weekTotalCoopTime = 0;
+let weekTotalNonCoopTime = 0;
+let firstCoopTime = 0;
+let secondCoopTime = 0;
+let thirdCoopTime = 0;
+let coopPercent = 0;
+let remainPercent = 0;
+let weekCoopPercent = 0;
+let weekCoopRemainPercent = 0;
+let weekNonCoopPercent = 0;
+let weekNonCoopRemainPercent = 0;
+let firstCoopPercent = 0;
+let secondCoopPercent = 0;
+let thirdCoopPercent = 0;
+let firstCoopRemainPercent = 0;
+let secondCoopRemainPercent = 0;
+let thirdCoopRemainPercent = 0;
+let coopStartDate = "2021-01-01";
+let coopEndDate = "2021-12-31";
+let duration = `${coopStartDate} - ${coopEndDate}`;
 
 // get api data
 const getData = async () => {
-  // test uid
+  // TEST
   let uid = 123456;
   const url = `https://we-coop-staging.herokuapp.com/api/v2/user_status/${uid}`;
   const res = await axios.get(url);
@@ -26,44 +33,41 @@ const getData = async () => {
 };
 
 getData().then((res) => {
-  // total coop hours and percentage
-  let totalCoopTime = 0;
-  let coopTime = res.coop_hours;
-  let remainTime = coopTime - totalCoopTime;
-  coopPercent = Math.round((totalCoopTime / coopTime) * 1000) / 10;
-  remainPercent = Math.round((remainTime / coopTime) * 1000) / 10;
+  // for totalCoopData
+  // let totalCoopTime = 0;
 
   const companies = res.company_status;
   for (let company of companies) {
     let hire_type = company.hire_type;
-    if (hire_type === "CO") {
+    if (hire_type == "CO") {
       let workingTime = parseFloat(company.working_time);
       totalCoopTime += workingTime;
     }
   }
 
-  console.log(coopTime);
-  console.log(totalCoopTime);
-  console.log(remainTime);
-  console.log(coopPercent);
-  console.log(remainPercent);
+  let coopTime = res.coop_hours;
+  let remainTime = coopTime - totalCoopTime;
+  coopPercent = Math.round((totalCoopTime / coopTime) * 1000) / 10;
+  remainPercent = Math.round((remainTime / coopTime) * 1000) / 10;
 
-  // week coop hours and percentage
-  let weekTotalCoopTime = res.week_coop_working_hours;
-  let weekTotalNonCoopTime = res.week_non_coop_working_hours;
+  // TEST
+  console.log("coopTime", coopTime);
+  console.log("totalCoopTime", totalCoopTime);
+  console.log("remainTime", remainTime);
+  console.log("coopPercent", coopPercent);
+  console.log("remainPercent", remainPercent);
+
+  // for weekCoopData
+  // for weekNonCoopData
+  weekTotalCoopTime = res.week_coop_working_hours;
+  weekTotalNonCoopTime = res.week_non_coop_working_hours;
 
   let weekCoopTime;
   let weekNonCoopTime;
-  let firstCoopTime = 0;
-  let secondCoopTime = 0;
-  let thirdCoopTime = 0;
 
   for (let company of companies) {
     let hire_type = company.hire_type;
-    if (!hire_type == "OT") {
-      // let workingTime = parseFloat(company.working_time);
-      // totalCoopTime += workingTime;
-      // console.log(totalCoopTime);
+    if (hire_type == "CO") {
       weekCoopTime = 40.0;
       weekNonCoopTime = 0;
       firstCoopTime = res.company_status[0].working_time;
@@ -74,11 +78,6 @@ getData().then((res) => {
       weekNonCoopTime = 20.0;
     }
   }
-  // console.log(coopTime);
-  console.log(totalCoopTime);
-  // console.log(remainTime);
-  // console.log(coopPercent);
-  // console.log(remainPercent);
 
   let weekCoopRemainTime = weekCoopTime - weekTotalCoopTime;
   let weekNonCoopRemainTime = weekNonCoopTime - weekTotalNonCoopTime;
@@ -90,7 +89,7 @@ getData().then((res) => {
   weekNonCoopRemainPercent =
     Math.round((weekNonCoopRemainTime / weekNonCoopTime) * 1000) / 10;
 
-  // coop hours and percentage by company
+  // firstCoopData, secondCoopData, thirdCoopData
   let firstCoopRemainTime = totalCoopTime - firstCoopTime;
   let secondCoopRemainTime = totalCoopTime - secondCoopTime;
   let thirdCoopRemainTime = totalCoopTime - thirdCoopTime;
@@ -107,7 +106,6 @@ getData().then((res) => {
   // coop duration
   coopStartDate = res.coop_start_date;
   coopEndDate = res.coop_end_date;
-  let duration = `${coopStartDate} - ${coopEndDate}`;
 });
 
 // colors
@@ -116,7 +114,7 @@ const gray200 = "#E5E7EB";
 const gray100 = "#F3F4F6";
 
 // dataData
-const baseData = {
+export const baseData = {
   datasets: [
     {
       data: [],
@@ -160,8 +158,6 @@ export const baseOptions = {
     },
   },
   cutoutPercentage: 70,
-  // maintainAspectRatio: false,
-  // responsive: false,
 };
 
 // datas
@@ -190,12 +186,23 @@ export const thirdCoopData = () => {
   return baseData;
 };
 
-export let totalCoopTime;
-export let weekTotalCoopTime;
-export let weekTotalNonCoopTime;
-export let firstCoopTime;
-export let secondCoopTime;
-export let thirdCoopTime;
+// export data
+// export let totalCoopTime = 0;
+// export let weekTotalCoopTime = 0;
+// export let weekTotalNonCoopTime = 0;
+// export let firstCoopTime = 0;
+// export let secondCoopTime = 0;
+// export let thirdCoopTime = 0;
+
+export {
+  totalCoopTime,
+  weekTotalCoopTime,
+  weekTotalNonCoopTime,
+  firstCoopTime,
+  secondCoopTime,
+  thirdCoopTime,
+  duration,
+};
 
 // export {
 //   totalCoopTime,
