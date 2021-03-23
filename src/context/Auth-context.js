@@ -1,24 +1,57 @@
-import React, { useState, createContext } from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
+import firebase from "../firebase/firebase";
 
-export const AuthContext = createContext({
-  isAuth: false,
-  login: () => {},
-});
+const AuthContext = createContext();
 
-const AuthContextProvider = (props) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+export function useAuth() {
+  return useContext(AuthContext);
+}
 
-  const loginHandler = () => {
-    setIsAuthenticated(true);
+export function AuthProvider({ children }) {
+  const [currentUser, setCurrentUser] = useState();
+
+  useEffect(() => {
+    firebase
+      .auth()
+      .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      .then(() => {
+        firebase.auth().onAuthStateChanged((user) => {
+          setCurrentUser(user);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const uiConfig = {
+    signInFlow: "popup",
+    signInOptions: [
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+    ],
+    callbacks: {
+      signInSuccess: () => false,
+    },
   };
 
-  return (
-    <AuthContext.Provider
-      value={{ isAuth: isAuthenticated, login: loginHandler }}
-    >
-      {props.children}
-    </AuthContext.Provider>
-  );
-};
+  const logout = () => {
+    return firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        console.log("Login Successfully");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-export default AuthContextProvider;
+  const value = {
+    currentUser,
+    uiConfig,
+    logout,
+  };
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+}
