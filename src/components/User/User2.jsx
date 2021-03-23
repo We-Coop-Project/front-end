@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-
-import { calculateData } from "./GraphData";
 
 import Title from "../UI/Title";
 import TotalCoop from "./Graphs/TotalCoop";
@@ -14,61 +11,49 @@ import { duration } from "./GraphData";
 
 const User = () => {
   let username = "Ami"; // data
-
-  const [selectedGraph, setSelectedGraph] = useState("");
-  const [graphData, setGraphData] = useState({});
+  const [graph, setGraph] = useState(null);
 
   useEffect(() => {
-    const getData = async () => {
-      // TEST
-      let uid = 123456;
-      const url = `https://we-coop-staging.herokuapp.com/api/v2/user_status/${uid}`;
-      const res = await axios.get(url);
-      const calculatedData = await calculateData(res.data);
-      setGraphData(calculatedData);
-    };
-    getData();
+    setGraph(<TotalCoop />);
   }, []);
 
   const selectHandler = (e) => {
-    setSelectedGraph(e.target.value);
-  };
-
-  const selectedComponent = (value) => {
+    const value = e.target.value;
     switch (value) {
       case "TotalCoop":
-        return <TotalCoop data={graphData} />;
-
+        setGraph(<TotalCoop />);
+        break;
       case "WeekCoop":
-        return <WeekCoop data={graphData} />;
-
+        setGraph(<WeekCoop />);
+        break;
       case "WeekNonCoop":
-        return <WeekNonCoop data={graphData} />;
-
+        setGraph(<WeekNonCoop />);
+        break;
       case "FirstCoop":
-        return <FirstCoop data={graphData} />;
-
+        setGraph(<FirstCoop />);
+        break;
       case "SecondCoop":
-        return <SecondCoop data={graphData} />;
-
+        setGraph(<SecondCoop />);
+        break;
       case "ThirdCoop":
-        return <ThirdCoop data={graphData} />;
-
+        setGraph(<ThirdCoop />);
+        break;
       default:
-        return <TotalCoop data={graphData} />;
+        setGraph(<TotalCoop />);
+        break;
     }
   };
 
   return (
     <div className="User">
       <div className="w-full flex justify-center">
-        <div className="w-full lg:w-3/4 flex flex-wrap items-center">
+        <div className="w-full lg:w-3/4 flex flex-wrap items-center border">
           <div className="w-full text-center">
             {/* <Title title={`Hello, ${username}`} /> */}
             <h1>Hello, {username}</h1>
             <h6 className="mt-2">{duration}</h6>
           </div>
-          <div className="w-full my-4">{selectedComponent(selectedGraph)}</div>
+          <div className="w-full my-4 border">{graph}</div>
 
           <div className="w-full flex justify-center">
             <select

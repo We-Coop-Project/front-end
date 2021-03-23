@@ -1,14 +1,19 @@
 import React from "react";
 
 import GraphModel from "../GraphModel";
-import { thirdCoopData, thirdCoopTime, baseOptions } from "../GraphData";
+import {
+  thirdCoopData,
+  thirdCoopTime,
+  baseOptions,
+  thirdCompanyName,
+} from "../GraphData";
 
 const ThirdCoop = () => {
   return (
     <GraphModel
       base={baseOptions}
       coopData={thirdCoopData}
-      text="Company C"
+      text={thirdCompanyName}
       percent={thirdCoopData().datasets[0].data[0]}
       hours={thirdCoopTime}
     />
