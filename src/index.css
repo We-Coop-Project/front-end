@@ -4,9 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
-#firebaseui_container {
+/* #firebaseui_container {
   z-index: -1;
-}
+} */
 
 @layer base {
   body {

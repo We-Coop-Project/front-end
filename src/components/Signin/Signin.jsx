@@ -58,7 +58,6 @@ const Signin = () => {
           <StyledFirebaseAuth
             uiConfig={uiConfig}
             firebaseAuth={firebase.auth()}
-            className="z-10"
           />
         )}
       </ContentContainer>
