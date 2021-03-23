@@ -24,9 +24,9 @@ const Sliders = () => {
   }, []);
 
   return (
-    <div>
-      <Slider {...settings} className="w-80 text-center flex">
-        <div className="focus:outline-none">
+    <div className="relative z-10">
+      <Slider {...settings} className="w-80 text-center flex z-10">
+        <div className="focus:outline-none z-10">
           <ReactTooltip id="for-start-date" efect="solid" place="bottom">
             When did you start your co-op job?
           </ReactTooltip>
