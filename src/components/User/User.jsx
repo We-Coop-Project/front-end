@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Title from "../UI/Title";
 import TotalCoop from "./Graphs/TotalCoop";
@@ -7,12 +7,15 @@ import WeekNonCoop from "./Graphs/WeekNonCoop";
 import FirstCoop from "./Graphs/FirstCoop";
 import SecondCoop from "./Graphs/SecondCoop";
 import ThirdCoop from "./Graphs/ThirdCoop";
+import { duration } from "./GraphData";
 
 const User = () => {
   let username = "Ami"; // data
+  const [graph, setGraph] = useState(null);
 
-  console.log("this is user.jsx");
-  const [graph, setGraph] = useState(<TotalCoop />);
+  useEffect(() => {
+    setGraph(<TotalCoop />);
+  }, []);
 
   const selectHandler = (e) => {
     const value = e.target.value;
@@ -44,13 +47,15 @@ const User = () => {
   return (
     <div className="User">
       <div className="w-full flex justify-center">
-        <div className="w-full lg:w-3/4 flex flex-wrap items-center">
+        <div className="w-full lg:w-3/4 flex flex-wrap items-center border">
           <div className="w-full text-center">
-            <Title title={`Hello, ${username}`} />
+            {/* <Title title={`Hello, ${username}`} /> */}
+            <h1>Hello, {username}</h1>
+            <h6 className="mt-2">{duration}</h6>
           </div>
-          <div className="w-full">{graph}</div>
+          <div className="w-full my-4 border">{graph}</div>
 
-          <div className="w-full flex justify-center mt-6">
+          <div className="w-full flex justify-center">
             <select
               onChange={selectHandler}
               className="h-8 w-1/2 text-xs text-gray-400 rounded px-2"

@@ -19,9 +19,13 @@ let thirdCoopPercent = 0;
 let firstCoopRemainPercent = 0;
 let secondCoopRemainPercent = 0;
 let thirdCoopRemainPercent = 0;
-let coopStartDate = "2021-01-01";
-let coopEndDate = "2021-12-31";
-let duration = `${coopStartDate} - ${coopEndDate}`;
+// let coopStartDate = "2021-01-01";
+// let coopEndDate = "2021-12-31";
+// let duration = `${coopStartDate} - ${coopEndDate}`;
+let duration = "";
+let firstCompanyName = "";
+let secondCompanyName = "";
+let thirdCompanyName = "";
 
 // get api data
 const getData = async () => {
@@ -34,12 +38,10 @@ const getData = async () => {
 
 getData().then((res) => {
   // for totalCoopData
-  // let totalCoopTime = 0;
-
   const companies = res.company_status;
   for (let company of companies) {
     let hire_type = company.hire_type;
-    if (hire_type == "CO") {
+    if (hire_type === "CO") {
       let workingTime = parseFloat(company.working_time);
       totalCoopTime += workingTime;
     }
@@ -49,13 +51,6 @@ getData().then((res) => {
   let remainTime = coopTime - totalCoopTime;
   coopPercent = Math.round((totalCoopTime / coopTime) * 1000) / 10;
   remainPercent = Math.round((remainTime / coopTime) * 1000) / 10;
-
-  // TEST
-  console.log("coopTime", coopTime);
-  console.log("totalCoopTime", totalCoopTime);
-  console.log("remainTime", remainTime);
-  console.log("coopPercent", coopPercent);
-  console.log("remainPercent", remainPercent);
 
   // for weekCoopData
   // for weekNonCoopData
@@ -67,7 +62,7 @@ getData().then((res) => {
 
   for (let company of companies) {
     let hire_type = company.hire_type;
-    if (hire_type == "CO") {
+    if (hire_type === "CO") {
       weekCoopTime = 40.0;
       weekNonCoopTime = 0;
       firstCoopTime = res.company_status[0].working_time;
@@ -90,6 +85,10 @@ getData().then((res) => {
     Math.round((weekNonCoopRemainTime / weekNonCoopTime) * 1000) / 10;
 
   // firstCoopData, secondCoopData, thirdCoopData
+  firstCompanyName = res.company_status[0].name;
+  secondCompanyName = res.company_status[1].name;
+  thirdCompanyName = res.company_status[2].name;
+
   let firstCoopRemainTime = totalCoopTime - firstCoopTime;
   let secondCoopRemainTime = totalCoopTime - secondCoopTime;
   let thirdCoopRemainTime = totalCoopTime - thirdCoopTime;
@@ -104,8 +103,9 @@ getData().then((res) => {
     Math.round((thirdCoopRemainTime / totalCoopTime) * 1000) / 10;
 
   // coop duration
-  coopStartDate = res.coop_start_date;
-  coopEndDate = res.coop_end_date;
+  let coopStartDate = res.coop_start_date;
+  let coopEndDate = res.coop_end_date;
+  duration = `${coopStartDate} - ${coopEndDate}`;
 });
 
 // colors
@@ -113,7 +113,7 @@ const blue500 = "#3B82F6";
 const gray200 = "#E5E7EB";
 const gray100 = "#F3F4F6";
 
-// dataData
+// baseData
 export const baseData = {
   datasets: [
     {
@@ -126,7 +126,7 @@ export const baseData = {
 };
 
 // baseOptions
-export const baseOptions = {
+const baseOptions = {
   legend: {
     display: false,
   },
@@ -161,38 +161,30 @@ export const baseOptions = {
 };
 
 // datas
-export const totalCoopData = () => {
+const totalCoopData = () => {
   baseData.datasets[0].data = [coopPercent, remainPercent];
   return baseData;
 };
-export const weekCoopData = () => {
+const weekCoopData = () => {
   baseData.datasets[0].data = [weekCoopPercent, weekCoopRemainPercent];
   return baseData;
 };
-export const weekNonCoopData = () => {
+const weekNonCoopData = () => {
   baseData.datasets[0].data = [weekNonCoopPercent, weekNonCoopRemainPercent];
   return baseData;
 };
-export const firstCoopData = () => {
+const firstCoopData = () => {
   baseData.datasets[0].data = [firstCoopPercent, firstCoopRemainPercent];
   return baseData;
 };
-export const secondCoopData = () => {
+const secondCoopData = () => {
   baseData.datasets[0].data = [secondCoopPercent, secondCoopRemainPercent];
   return baseData;
 };
-export const thirdCoopData = () => {
+const thirdCoopData = () => {
   baseData.datasets[0].data = [thirdCoopPercent, thirdCoopRemainPercent];
   return baseData;
 };
-
-// export data
-// export let totalCoopTime = 0;
-// export let weekTotalCoopTime = 0;
-// export let weekTotalNonCoopTime = 0;
-// export let firstCoopTime = 0;
-// export let secondCoopTime = 0;
-// export let thirdCoopTime = 0;
 
 export {
   totalCoopTime,
@@ -202,6 +194,13 @@ export {
   secondCoopTime,
   thirdCoopTime,
   duration,
+  baseOptions,
+  totalCoopData,
+  weekCoopData,
+  weekNonCoopData,
+  firstCoopData,
+  secondCoopData,
+  thirdCoopData,
 };
 
 // export {
