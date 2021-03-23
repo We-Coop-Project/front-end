@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 
+import { api } from "../../api/api";
 import { calculateData } from "./GraphData";
 
 import TotalCoop from "./Graphs/TotalCoop";
@@ -25,8 +26,9 @@ const User = () => {
       // let uid = "4rfvbgt5";
       // let uid = "testcoopstartdate";
       // let uid = "AMyUTgl8UwevHPc3RK9coFJ5Wek2";
-      const url = `https://we-coop-staging.herokuapp.com/api/v2/user_status/${uid}`;
-      const res = await axios.get(url);
+      // const url = `user_status/${uid}`;
+      // const url = `https://we-coop-staging.herokuapp.com/api/v2/user_status/${uid}`;
+      const res = await api.get(`user_status/${uid}`);
       const calculatedData = await calculateData(res.data);
       setGraphData(calculatedData);
     };
