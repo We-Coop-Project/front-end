@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 
 // variables
 let totalCoopTime = 0;
@@ -25,19 +25,17 @@ let secondCompanyName = "";
 let thirdCompanyName = "";
 
 // get api data
-const getData = async () => {
-  // TEST
-  let uid = 123456;
-  // let uid = "1qazxsw2";
-  const url = `https://we-coop-staging.herokuapp.com/api/v2/user_status/${uid}`;
-  const res = await axios.get(url);
-  return res.data;
-};
+// const getData = async () => {
+//   // TEST
+//   let uid = 123456;
+//   // let uid = "1qazxsw2";
+//   const url = `https://we-coop-staging.herokuapp.com/api/v2/user_status/${uid}`;
+//   const res = await axios.get(url);
+//   return res.data;
+// };
 
 export const calculateData = (res) => {
   // for totalCoopData
-  // let totalCoopTime = 0;
-
   const companies = res.company_status;
   for (let company of companies) {
     let hire_type = company.hire_type;
@@ -46,21 +44,12 @@ export const calculateData = (res) => {
       totalCoopTime += workingTime;
     }
   }
-
   let coopTime = res.coop_hours;
   let remainTime = coopTime - totalCoopTime;
   coopPercent = Math.round((totalCoopTime / coopTime) * 1000) / 10;
   remainPercent = Math.round((remainTime / coopTime) * 1000) / 10;
 
-  // // TEST
-  // console.log("coopTime", coopTime);
-  // console.log("totalCoopTime", totalCoopTime);
-  // console.log("remainTime", remainTime);
-  // console.log("coopPercent", coopPercent);
-  // console.log("remainPercent", remainPercent);
-
-  // for weekCoopData
-  // for weekNonCoopData
+  // for weekCoopData, weekNonCoopData
   weekTotalCoopTime = res.week_coop_working_hours;
   weekTotalNonCoopTime = res.week_non_coop_working_hours;
 
@@ -91,7 +80,7 @@ export const calculateData = (res) => {
   weekNonCoopRemainPercent =
     Math.round((weekNonCoopRemainTime / weekNonCoopTime) * 1000) / 10;
 
-  // firstCoopData, secondCoopData, thirdCoopData
+  // for firstCoopData, secondCoopData, thirdCoopData
   if (res.company_status.length > 2) {
     firstCompanyName = res.company_status[0].name;
     secondCompanyName = res.company_status[1].name;
@@ -123,8 +112,6 @@ export const calculateData = (res) => {
 
   return { coopTime, totalCoopTime, remainTime, coopPercent, remainPercent };
 };
-
-console.log(duration);
 
 // getData().then((res) => {
 //   // for totalCoopData

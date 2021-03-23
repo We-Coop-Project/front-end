@@ -28,7 +28,7 @@ let thirdCompanyName = "";
 const getData = async () => {
   // TEST
   // let uid = "123456";
-  let uid = "1qazxsw2";
+  // let uid = "1qazxsw2";
   const url = `https://we-coop-staging.herokuapp.com/api/v2/user_status/${uid}`;
   const res = await axios.get(url);
   console.log(res.data);
