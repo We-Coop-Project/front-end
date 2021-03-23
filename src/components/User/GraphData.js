@@ -1,5 +1,7 @@
 // time variables
 let totalCoopTime = 0;
+let weekCoopTime = 0;
+let weekNonCoopTime = 0;
 let weekTotalCoopTime = 0;
 let weekTotalNonCoopTime = 0;
 let firstCoopTime = 0;
@@ -20,32 +22,13 @@ let secondCoopRemainPercent = 0;
 let thirdCoopRemainPercent = 0;
 // other variables
 let duration = "";
-let firstCompanyName = "You don't have comapany info!";
-let secondCompanyName = "You don't have comapany info!";
-let thirdCompanyName = "You don't have comapany info!";
+let firstCompanyName = "You don't have any comapany info!";
+let secondCompanyName = "You don't have any comapany info!";
+let thirdCompanyName = "You don't have any comapany info!";
 
 export const calculateData = (res) => {
-  // // for weekCoopData, weekNonCoopData
-  // // reset week data
-  // let date = new Date();
-  // let dayOfWeek = date.getDay();
-  // let hour = date.getHours();
-  // let minute = date.getMinutes();
-  // let second = date.getSeconds();
-  // let time = `${dayOfWeek}:${hour}:${minute}:${second}`;
-  // const resetTime = "7:23:59:59";
-
-  // // delete week data when Sunday 23:59:59
-  // if (time == resetTime) {
-  //   weekTotalCoopTime = 0;
-  //   weekTotalNonCoopTime = 0;
-  // } else {
-  //   weekTotalCoopTime = res.week_coop_working_hours;
-  //   weekTotalNonCoopTime = res.week_non_coop_working_hours;
-  // }
-
-  let weekCoopTime;
-  let weekNonCoopTime;
+  // let weekCoopTime;
+  // let weekNonCoopTime;
   weekTotalCoopTime = res.week_coop_working_hours;
   weekTotalNonCoopTime = res.week_non_coop_working_hours;
 
@@ -60,7 +43,7 @@ export const calculateData = (res) => {
         // define working limit
         weekCoopTime = 40.0;
         weekNonCoopTime = 0;
-
+        // switch case to define company name and working time by company
         switch (res.company_status.length) {
           case 3:
             // define company name
@@ -83,6 +66,7 @@ export const calculateData = (res) => {
             firstCoopTime = res.company_status[0].working_time;
             break;
           default:
+            console.log("Do you have more than 3 companies info?");
             break;
         }
       } else {
@@ -91,16 +75,16 @@ export const calculateData = (res) => {
       }
     }
   } else {
-    // alert("You don't have any coop company data. Get a coop job!");
-    weekCoopPercent = 0;
-    weekCoopRemainPercent = 0;
+    console.log(
+      "You don't have any coop company data. Get a coop job or input company info!"
+    );
   }
 
+  // variables & calculation for total coop and week coop
   let coopTime = res.coop_hours;
   let remainTime = coopTime - totalCoopTime;
   coopPercent = Math.round((totalCoopTime / coopTime) * 1000) / 10;
   remainPercent = Math.round((remainTime / coopTime) * 1000) / 10;
-
   let weekCoopRemainTime = weekCoopTime - weekTotalCoopTime;
   let weekNonCoopRemainTime = weekNonCoopTime - weekTotalNonCoopTime;
   weekCoopPercent = Math.round((weekTotalCoopTime / weekCoopTime) * 1000) / 10;
@@ -110,8 +94,7 @@ export const calculateData = (res) => {
     Math.round((weekTotalNonCoopTime / weekNonCoopTime) * 1000) / 10;
   weekNonCoopRemainPercent =
     Math.round((weekNonCoopRemainTime / weekNonCoopTime) * 1000) / 10;
-
-  // for firstCoopData, secondCoopData, thirdCoopData
+  // variables & calculation for firstCoopData, secondCoopData, thirdCoopData
   let firstCoopRemainTime = totalCoopTime - firstCoopTime;
   let secondCoopRemainTime = totalCoopTime - secondCoopTime;
   let thirdCoopRemainTime = totalCoopTime - thirdCoopTime;
@@ -124,7 +107,12 @@ export const calculateData = (res) => {
     Math.round((secondCoopRemainTime / totalCoopTime) * 1000) / 10;
   thirdCoopRemainPercent =
     Math.round((thirdCoopRemainTime / totalCoopTime) * 1000) / 10;
+  // valiables for coop duration
+  let coopStartDate = res.coop_start_date;
+  let coopEndDate = res.coop_end_date;
+  duration = `${coopStartDate} - ${coopEndDate}`;
 
+  // if statement not to show Nan!!
   if (isNaN(weekCoopPercent)) {
     weekCoopPercent = 0;
     weekCoopRemainPercent = 100;
@@ -145,11 +133,6 @@ export const calculateData = (res) => {
     thirdCoopPercent = 0;
     thirdCoopRemainPercent = 100;
   }
-
-  // coop duration
-  let coopStartDate = res.coop_start_date;
-  let coopEndDate = res.coop_end_date;
-  duration = `${coopStartDate} - ${coopEndDate}`;
 
   return {
     coopTime,
