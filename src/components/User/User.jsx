@@ -23,6 +23,7 @@ const User = () => {
       // TEST
       // let uid = "123456";
       let uid = "1qazxsw2";
+      // let uid = "4rfvbgt5";
       const url = `https://we-coop-staging.herokuapp.com/api/v2/user_status/${uid}`;
       const res = await axios.get(url);
       const calculatedData = await calculateData(res.data);
@@ -65,7 +66,6 @@ const User = () => {
       <div className="w-full flex justify-center">
         <div className="w-full lg:w-3/4 flex flex-wrap items-center">
           <div className="w-full text-center">
-            {/* <Title title={`Hello, ${username}`} /> */}
             <h1>Hello, {username}</h1>
             <h6 className="mt-2">{duration}</h6>
           </div>

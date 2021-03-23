@@ -16,9 +16,9 @@ const Aboutus = () => {
       <div className="w-full text-center">
         <Title title="About Us" />
         <p className="mb-4">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt
-          omnis incidunt praesentium vel est consequuntur, modi quod eius
-          placeat consectetur.
+          We want to do something useful for students who go to school like us.
+          This app was created in that process, and we hope it will be useful to
+          everyone. Thank you!
         </p>
         {/* Members */}
         <div className="w-full flex flex-wrap lg:flex-no-wrap">

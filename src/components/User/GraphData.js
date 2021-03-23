@@ -50,8 +50,23 @@ export const calculateData = (res) => {
   remainPercent = Math.round((remainTime / coopTime) * 1000) / 10;
 
   // for weekCoopData, weekNonCoopData
-  weekTotalCoopTime = res.week_coop_working_hours;
-  weekTotalNonCoopTime = res.week_non_coop_working_hours;
+
+  // reset week data
+  let date = new Date();
+  let dayOfWeek = date.getDay();
+  let hour = date.getHours();
+  let minute = date.getMinutes();
+  let second = date.getSeconds();
+  let time = `${dayOfWeek}:${hour}:${minute}:${second}`;
+  const resetTime = "7:23:59:59";
+
+  if (time === resetTime) {
+    weekTotalCoopTime = 0;
+    weekTotalNonCoopTime = 0;
+  } else {
+    weekTotalCoopTime = res.week_coop_working_hours;
+    weekTotalNonCoopTime = res.week_non_coop_working_hours;
+  }
 
   let weekCoopTime;
   let weekNonCoopTime;
@@ -59,11 +74,34 @@ export const calculateData = (res) => {
   for (let company of companies) {
     let hire_type = company.hire_type;
     if (hire_type === "CO") {
+      // define working limit
       weekCoopTime = 40.0;
       weekNonCoopTime = 0;
-      firstCoopTime = res.company_status[0].working_time;
-      secondCoopTime = res.company_status[1].working_time;
-      thirdCoopTime = res.company_status[2].working_time;
+
+      switch (res.company_status.length) {
+        case 3:
+          // define company name
+          firstCompanyName = res.company_status[0].name;
+          secondCompanyName = res.company_status[1].name;
+          thirdCompanyName = res.company_status[2].name;
+          // define working time by companies
+          firstCoopTime = res.company_status[0].working_time;
+          secondCoopTime = res.company_status[1].working_time;
+          thirdCoopTime = res.company_status[2].working_time;
+          break;
+        case 2:
+          firstCompanyName = res.company_status[0].name;
+          secondCompanyName = res.company_status[1].name;
+          firstCoopTime = res.company_status[0].working_time;
+          secondCoopTime = res.company_status[1].working_time;
+          break;
+        case 1:
+          firstCompanyName = res.company_status[0].name;
+          firstCoopTime = res.company_status[0].working_time;
+          break;
+        default:
+          break;
+      }
     } else {
       weekCoopTime = 20.0;
       weekNonCoopTime = 20.0;
@@ -81,17 +119,6 @@ export const calculateData = (res) => {
     Math.round((weekNonCoopRemainTime / weekNonCoopTime) * 1000) / 10;
 
   // for firstCoopData, secondCoopData, thirdCoopData
-  if (res.company_status.length > 2) {
-    firstCompanyName = res.company_status[0].name;
-    secondCompanyName = res.company_status[1].name;
-    thirdCompanyName = res.company_status[2].name;
-  } else if (res.company_status.length > 1) {
-    firstCompanyName = res.company_status[0].name;
-    secondCompanyName = res.company_status[1].name;
-  } else if (res.company_status.length > 0) {
-    firstCompanyName = res.company_status[0].name;
-  }
-
   let firstCoopRemainTime = totalCoopTime - firstCoopTime;
   let secondCoopRemainTime = totalCoopTime - secondCoopTime;
   let thirdCoopRemainTime = totalCoopTime - thirdCoopTime;
