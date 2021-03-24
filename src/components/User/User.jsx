@@ -65,7 +65,7 @@ const User = () => {
             <h1>Hello, {currentUser.displayName}</h1>
             <h6 className="mt-2">{duration}</h6>
           </div>
-          <div className="w-full my-4">{selectedComponent(selectedGraph)}</div>
+          <div className="w-full my-6">{selectedComponent(selectedGraph)}</div>
 
           <div className="w-full flex justify-center">
             <select
