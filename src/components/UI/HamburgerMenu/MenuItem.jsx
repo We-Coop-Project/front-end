@@ -27,7 +27,7 @@ const MenuItem = (props) => {
       <div
         className={`text-2xl p-4 ${
           hover ? "text-gray-400" : "text-white"
-        } text-center`}
+        } text-center `}
         style={styles.menuItem}
         onMouseEnter={() => {
           handleHover();
