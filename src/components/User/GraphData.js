@@ -82,7 +82,6 @@ export const calculateData = (res) => {
   // variables & calculation for total coop and week coop
   let coopTime = res.coop_hours;
   let remainTime = coopTime - totalCoopTime;
-  console.log("rem: ", remainTime);
   coopPercent = Math.round((totalCoopTime / coopTime) * 1000) / 10;
   remainPercent = Math.round((remainTime / coopTime) * 1000) / 10;
   let weekCoopRemainTime = weekCoopTime - weekTotalCoopTime;

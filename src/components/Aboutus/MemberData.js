@@ -2,22 +2,22 @@ const MemberData = [
   {
     image: "",
     name: "Ami Yamanouchi",
-    url: "https://ami.com",
+    url: "https://amiyamanouchi.github.io/",
   },
   {
     image: "",
     name: "Ayumi Tanaka",
-    url: "https://ayumi.com",
+    url: "https://ayumitanaka.net/",
   },
   {
     image: "",
     name: "Hiroshi Egawa",
-    url: "https://hiro.com",
+    url: "https://www.linkedin.com/in/hiroshiegawa",
   },
   {
     image: "",
     name: "Miyu Setoyama",
-    url: "https://miyu.com",
+    url: "https://github.com/Smiyu-web",
   },
 ];
 

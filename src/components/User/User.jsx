@@ -14,22 +14,18 @@ import { duration } from "./GraphData";
 
 const User = () => {
   const { currentUser } = useAuth();
-
   const [selectedGraph, setSelectedGraph] = useState("");
   const [graphData, setGraphData] = useState({});
   const [currentCompany, setCurrentCompany] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      // User ID
-      // let uid = currentUser.uid;
+      let uid = currentUser.uid;
       // console.log(currentUser.uid);
-
-      let uid = "1";
+      // let uid = "1";
       // let uid = "2";
       // let uid = "3";
       // let uid = "4";
-
       const res = await api.get(`user_status/${uid}`);
       const calculatedData = await calculateData(res.data);
       setCurrentCompany(res.data.company_status);
@@ -74,17 +70,21 @@ const User = () => {
           <div className="w-full flex justify-center">
             <select
               onChange={selectHandler}
-              className="h-8 w-1/2 text-xs text-gray-400 rounded px-2"
+              className="h-8 w-1/2 text-xs text-gray-400 rounded outline-none px-2"
             >
-              <option value="TotalCoop">Total Coop Time</option>
-              <option value="WeekCoop">Week Coop Time</option>
-              <option value="WeekNonCoop">Week Non Coop Time</option>
+              <option value="TotalCoop">Total CO-OP Time</option>
+              <option value="WeekCoop">Week CO-OP Time</option>
+              <option value="WeekNonCoop">Week Non CO-OP Time</option>
 
               {currentCompany
                 .filter((company) => company.hire_type === "CO")
                 .map((company, index) => {
                   const values = ["FirstCoop", "SecondCoop", "ThirdCoop"];
-                  return <option value={values[index]}>{company.name}</option>;
+                  return (
+                    <option value={values[index]}>
+                      CO-OP Time at {company.name}
+                    </option>
+                  );
                 })}
             </select>
           </div>

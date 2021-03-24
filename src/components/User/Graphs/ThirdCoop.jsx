@@ -14,7 +14,7 @@ const ThirdCoop = () => {
       base={baseOptions}
       coopData={thirdCoopData}
       text={thirdCompanyName}
-      percent={thirdCoopData().datasets[0].data[0]}
+      percent={thirdCoopData().datasets[0].data[0].toFixed(1)}
       hours={thirdCoopTime}
     />
   );

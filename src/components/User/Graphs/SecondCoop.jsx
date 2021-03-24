@@ -14,7 +14,7 @@ const SecondCoop = () => {
       base={baseOptions}
       coopData={secondCoopData}
       text={secondCompanyName}
-      percent={secondCoopData().datasets[0].data[0]}
+      percent={secondCoopData().datasets[0].data[0].toFixed(1)}
       hours={secondCoopTime}
     />
   );
