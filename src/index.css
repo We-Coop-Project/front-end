@@ -4,10 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* #firebaseui_container {
-  z-index: -1;
-} */
-
 @layer base {
   body {
     @apply font-sanspro text-white dark:text-gray-400 bg-primary dark:bg-secondary select-none;

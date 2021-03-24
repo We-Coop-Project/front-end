@@ -19,17 +19,18 @@ const Signin = () => {
         <Title title="Sign In" />
 
         {currentUser ? (
-          <span>
-            <div>Signed In!</div>
-            <button onClick={logout}>Sign out!</button>
-            <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
-            <img alt="profile pic" src={firebase.auth().currentUser.photoURL} />
-          </span>
+          //   <span>
+          //     <div>Signed In!</div>
+          //     <button onClick={logout}>Sign out!</button>
+          //     <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
+          //     <img alt="profile pic" src={firebase.auth().currentUser.photoURL} />
+          //   </span>
+          history.push("/user")
         ) : (
-          // history.push("/user")
           <StyledFirebaseAuth
             uiConfig={uiConfig}
             firebaseAuth={firebase.auth()}
+            className="z-10"
           />
         )}
       </ContentContainer>

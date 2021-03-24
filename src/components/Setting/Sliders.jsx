@@ -76,8 +76,32 @@ const Sliders = () => {
           />
         </div>
         <div>
-          <InputTab id="company" type="text" placeholder="Company name" />
-          <InputTab id="isCoop" type="text" placeholder="Co-op Job?" />
+          <InputTab id="company" type="text" placeholder="#1 Company name" />
+          <select
+            className="Input"
+            style={{ textAlignLast: "center" }}
+            id="isCoop"
+          >
+            <option value="" disabled selected>
+              Co-op Job?
+            </option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        <div>
+          <InputTab id="company" type="text" placeholder="#2 Company name" />
+          <select
+            className="Input"
+            style={{ textAlignLast: "center" }}
+            id="isCoop"
+          >
+            <option value="" disabled selected>
+              Co-op Job?
+            </option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
         </div>
       </Slider>
     </div>

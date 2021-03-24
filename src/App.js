@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import NavBar from "./components/UI/NavBar";
-import PriveteRoute from "../src/Route/PrivateRoute";
+import PriveteRoute from "../src/Route/privateRoute";
 
 import {
   Home,
@@ -18,16 +18,6 @@ import {
 } from "./components/components";
 
 const App = () => {
-  // const [userName, setUserName] = useContext(UserContext);
-  // console.log(userContext);
-  // const authContext = useContext(AuthContext);
-  // let content = <Home />;
-
-  // if (authContext.isAuth) {
-  //   content = <User />;
-  // }
-
-  // return content;
   return (
     <AuthProvider>
       <Router>
