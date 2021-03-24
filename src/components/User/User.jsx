@@ -32,7 +32,7 @@ const User = () => {
       setGraphData(calculatedData);
     };
     getData();
-  }, []);
+  }, [currentUser.uid]);
 
   const selectHandler = (e) => {
     setSelectedGraph(e.target.value);
