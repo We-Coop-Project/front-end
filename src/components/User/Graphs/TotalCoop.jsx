@@ -10,7 +10,7 @@ const TotalCoop = () => {
       coopData={totalCoopData}
       text="Total Coop Hours"
       percent={totalCoopData().datasets[0].data[0]}
-      hours={totalCoopTime}
+      hours={totalCoopTime.toFixed(1)}
     />
   );
 };

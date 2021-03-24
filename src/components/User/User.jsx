@@ -21,7 +21,10 @@ const User = () => {
 
   useEffect(() => {
     const getData = async () => {
-      // TEST
+      // User ID
+      // let uid = currentUser.uid;
+      // console.log(currentUser.uid);
+
       let uid = "1";
       // let uid = "2";
       // let uid = "3";

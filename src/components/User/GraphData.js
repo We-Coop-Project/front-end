@@ -27,8 +27,6 @@ let secondCompanyName = "You don't have any comapany info!";
 let thirdCompanyName = "You don't have any comapany info!";
 
 export const calculateData = (res) => {
-  // let weekCoopTime;
-  // let weekNonCoopTime;
   weekTotalCoopTime = res.week_coop_working_hours;
   weekTotalNonCoopTime = res.week_non_coop_working_hours;
 
@@ -84,6 +82,7 @@ export const calculateData = (res) => {
   // variables & calculation for total coop and week coop
   let coopTime = res.coop_hours;
   let remainTime = coopTime - totalCoopTime;
+  console.log("rem: ", remainTime);
   coopPercent = Math.round((totalCoopTime / coopTime) * 1000) / 10;
   remainPercent = Math.round((remainTime / coopTime) * 1000) / 10;
   let weekCoopRemainTime = weekCoopTime - weekTotalCoopTime;
@@ -113,7 +112,7 @@ export const calculateData = (res) => {
   let coopEndDate = res.coop_end_date;
   duration = `${coopStartDate} - ${coopEndDate}`;
 
-  // if statement not to show Nan!!
+  // if statement not to show NaN!!
   if (isNaN(weekCoopPercent)) {
     weekCoopPercent = 0;
     weekCoopRemainPercent = 100;
