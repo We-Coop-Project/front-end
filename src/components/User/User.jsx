@@ -1,81 +1,89 @@
-import React, { useContext } from "react";
-import Title from "../UI/Title";
-import GraphModel from "./GraphModel";
-import { useAuth } from "../../context/Auth-context";
+import React, { useState, useEffect } from "react";
 
-import {
-  totalCoopTime,
-  weekTotalCoopTime,
-  weekTotalNonCoopTime,
-  totalCoopData,
-  weekCoopData,
-  weekNonCoopData,
-  baseOptions,
-} from "./GraphData";
+import { api } from "../../api/api";
+import { calculateData } from "./GraphData";
+
+import TotalCoop from "./Graphs/TotalCoop";
+import WeekCoop from "./Graphs/WeekCoop";
+import WeekNonCoop from "./Graphs/WeekNonCoop";
+import FirstCoop from "./Graphs/FirstCoop";
+import SecondCoop from "./Graphs/SecondCoop";
+import ThirdCoop from "./Graphs/ThirdCoop";
+import { duration } from "./GraphData";
 
 const User = () => {
+  // let username = "Ami"; // data
   const { currentUser } = useAuth();
 
-  let thisWeek = "4th week, March"; // data
+  const [selectedGraph, setSelectedGraph] = useState("");
+  const [graphData, setGraphData] = useState({});
+  const [currentCompany, setCurrentCompany] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      // TEST
+      let uid = "1";
+      // let uid = "2";
+      // let uid = "3";
+      // let uid = "4";
+
+      const res = await api.get(`user_status/${uid}`);
+      const calculatedData = await calculateData(res.data);
+      setCurrentCompany(res.data.company_status);
+      setGraphData(calculatedData);
+    };
+    getData();
+  }, []);
+
+  const selectHandler = (e) => {
+    setSelectedGraph(e.target.value);
+  };
+
+  const selectedComponent = (value) => {
+    switch (value) {
+      case "TotalCoop":
+        return <TotalCoop data={graphData} />;
+      case "WeekCoop":
+        return <WeekCoop data={graphData} />;
+      case "WeekNonCoop":
+        return <WeekNonCoop data={graphData} />;
+      case "FirstCoop":
+        return <FirstCoop data={graphData} />;
+      case "SecondCoop":
+        return <SecondCoop data={graphData} />;
+      case "ThirdCoop":
+        return <ThirdCoop data={graphData} />;
+      default:
+        return <TotalCoop data={graphData} />;
+    }
+  };
 
   return (
-    <div className="User border">
-      <div className="h-3/4 w-full flex justify-center border-4">
-        <div className="hidden lg:flex w-full lg:w-1/4 lg:flex-wrap lg:content-between border">
-          <div className="w-full">
-            <h6 className="w-full text-center">{thisWeek}</h6>
-            <GraphModel
-              base={baseOptions}
-              coopData={weekCoopData}
-              text="Co-op Job"
-              percent={weekCoopData().datasets[0].data[0]}
-              hours={weekTotalCoopTime}
-            />
+    <div className="User">
+      <div className="w-full flex justify-center">
+        <div className="w-full lg:w-3/4 flex flex-wrap items-center">
+          <div className="w-full text-center">
+            <h1>Hello, {currentUser.displayName}</h1>
+            <h6 className="mt-2">{duration}</h6>
           </div>
-          <div className="w-full mt-8">
-            <GraphModel
-              base={baseOptions}
-              coopData={weekNonCoopData}
-              text="Non Co-op Job"
-              percent={weekNonCoopData().datasets[0].data[0]}
-              hours={weekTotalNonCoopTime}
-            />
-          </div>
-        </div>
-        {/* <div className="w-3/4 flex flex-wrap items-center border"> */}
-        <div className="w-full lg:w-2/4 flex flex-wrap items-center border">
-          <div className="w-full text-center border">
-            <Title title={`Hello, ${currentUser.displayName}`} />
-          </div>
-          <div className="w-full border">
-            <GraphModel
-              base={baseOptions}
-              coopData={totalCoopData}
-              text="Total"
-              percent={totalCoopData().datasets[0].data[0]}
-              hours={totalCoopTime}
-            />
-          </div>
-        </div>
-        <div className="hidden lg:flex w-full lg:w-1/4 lg:flex-wrap lg:content-between border">
-          <div className="w-full">
-            <h6 className="w-full text-center">{thisWeek}</h6>
-            <GraphModel
-              base={baseOptions}
-              coopData={weekCoopData}
-              text="Co-op Job"
-              percent={weekCoopData().datasets[0].data[0]}
-              hours={weekTotalCoopTime}
-            />
-          </div>
-          <div className="w-full mt-8">
-            <GraphModel
-              base={baseOptions}
-              coopData={weekNonCoopData}
-              text="Non Co-op Job"
-              percent={weekNonCoopData().datasets[0].data[0]}
-              hours={weekTotalNonCoopTime}
-            />
+          <div className="w-full my-4">{selectedComponent(selectedGraph)}</div>
+
+          <div className="w-full flex justify-center">
+            <select
+              onChange={selectHandler}
+              className="h-8 w-1/2 text-xs text-gray-400 rounded px-2"
+            >
+              <option value="TotalCoop">Total Coop Time</option>
+              <option value="WeekCoop">Week Coop Time</option>
+              <option value="WeekNonCoop">Week Non Coop Time</option>
+
+              {currentCompany
+                .filter((company) => company.hire_type === "CO")
+                .map((company, index) => {
+                  const values = ["FirstCoop", "SecondCoop", "ThirdCoop"];
+                  return <option value={values[index]}>{company.name}</option>;
+                })}
+            </select>
           </div>
         </div>
       </div>

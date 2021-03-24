@@ -14,7 +14,7 @@ const Menu = (props) => {
     <div
       className={`absolute top-0 left-0 h${
         open ? "-screen" : "-0"
-      } w-screen bg-black opacity-75 `}
+      } w-screen bg-black bg-opacity-75 `}
       // display: "flex",
       // flexDirection: "column",
       // color: "#fafafa",

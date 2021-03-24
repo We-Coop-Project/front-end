@@ -1,5 +1,16 @@
-# We are We-Coop!
+# We are We Coop!
 
-### `npm install --save react-chartjs-2 chart.js`
+### Technology Used
 
-### `npm i chartjs-plugin-doughnutlabel`
+##### Frontend
+
+- React.js
+- Hooks
+- Chart.js
+- TailwindCSS
+
+##### Backend
+
+- Python Django
+- PostgreSQL
+- Firebase
