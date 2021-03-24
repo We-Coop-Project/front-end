@@ -18,10 +18,11 @@ const User = () => {
   const [graphData, setGraphData] = useState({});
   const [currentCompany, setCurrentCompany] = useState([]);
 
+  let uid = currentUser.uid;
+
   useEffect(() => {
     const getData = async () => {
-      let uid = currentUser.uid;
-      // console.log(currentUser.uid);
+      // console.log(uid);
       // let uid = "1";
       // let uid = "2";
       // let uid = "3";
@@ -32,7 +33,7 @@ const User = () => {
       setGraphData(calculatedData);
     };
     getData();
-  }, [currentUser.uid]);
+  }, [uid]);
 
   const selectHandler = (e) => {
     setSelectedGraph(e.target.value);
