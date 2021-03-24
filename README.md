@@ -6,7 +6,7 @@ We CO-OP is a co-op time management web application. We want to do something use
 
 ### Demo
 
-[We CO-OP](URL){:target="\_blank"}
+[We CO-OP](URL)
 
 ### Technology Used
 
