@@ -3,8 +3,8 @@ import Button from '../UI/Button'
 
 const FontCheck = () => {
   return (
-    <div className="text-center ">
-      <h1>How to use We CO-OP</h1>
+    <div className="text-center  px-8">
+      <h1>What is We CO-OP</h1>
       <br />
       <p>
         This app manages the co-op's time calculation just by entering your
