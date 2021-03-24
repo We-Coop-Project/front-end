@@ -10,7 +10,7 @@ import WeekNonCoop from "./Graphs/WeekNonCoop";
 import FirstCoop from "./Graphs/FirstCoop";
 import SecondCoop from "./Graphs/SecondCoop";
 import ThirdCoop from "./Graphs/ThirdCoop";
-import { duration } from "./GraphData";
+import { coopTime, duration } from "./GraphData";
 
 const User = () => {
   const { currentUser } = useAuth();
@@ -64,7 +64,12 @@ const User = () => {
         <div className="w-full lg:w-3/4 flex flex-wrap items-center">
           <div className="w-full text-center">
             <h1>Hello, {currentUser.displayName}</h1>
-            <h6 className="mt-2">{duration}</h6>
+            <p className="mt-3">
+              Your CO-OP hours : <em>{coopTime}</em> hrs
+            </p>
+            <p>
+              <em>{duration}</em>
+            </p>
           </div>
           <div className="w-full my-6">{selectedComponent(selectedGraph)}</div>
 

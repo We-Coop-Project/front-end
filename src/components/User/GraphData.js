@@ -1,4 +1,5 @@
 // time variables
+let coopTime = 0;
 let totalCoopTime = 0;
 let weekCoopTime = 0;
 let weekNonCoopTime = 0;
@@ -80,7 +81,7 @@ export const calculateData = (res) => {
   }
 
   // variables & calculation for total coop and week coop
-  let coopTime = res.coop_hours;
+  coopTime = res.coop_hours;
   let remainTime = coopTime - totalCoopTime;
   coopPercent = Math.round((totalCoopTime / coopTime) * 1000) / 10;
   remainPercent = Math.round((remainTime / coopTime) * 1000) / 10;
@@ -216,6 +217,7 @@ const thirdCoopData = () => {
 };
 
 export {
+  coopTime,
   totalCoopTime,
   weekTotalCoopTime,
   weekTotalNonCoopTime,
