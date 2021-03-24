@@ -33,6 +33,7 @@ export const calculateData = (res) => {
   weekTotalNonCoopTime = res.week_non_coop_working_hours;
 
   const companies = res.company_status;
+
   if (companies.length > 0) {
     for (let company of companies) {
       let hire_type = company.hire_type;

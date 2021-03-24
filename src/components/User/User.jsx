@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import axios from "axios";
 
 import { api } from "../../api/api";
 import { calculateData } from "./GraphData";
@@ -17,19 +16,19 @@ const User = () => {
 
   const [selectedGraph, setSelectedGraph] = useState("");
   const [graphData, setGraphData] = useState({});
+  const [currentCompany, setCurrentCompany] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
       // TEST
-      let uid = "123456";
-      // let uid = "1qazxsw2";
-      // let uid = "4rfvbgt5";
-      // let uid = "testcoopstartdate";
-      // let uid = "AMyUTgl8UwevHPc3RK9coFJ5Wek2";
-      // const url = `user_status/${uid}`;
-      // const url = `https://we-coop-staging.herokuapp.com/api/v2/user_status/${uid}`;
+      let uid = "1";
+      // let uid = "2";
+      // let uid = "3";
+      // let uid = "4";
+
       const res = await api.get(`user_status/${uid}`);
       const calculatedData = await calculateData(res.data);
+      setCurrentCompany(res.data.company_status);
       setGraphData(calculatedData);
     };
     getData();
@@ -43,22 +42,16 @@ const User = () => {
     switch (value) {
       case "TotalCoop":
         return <TotalCoop data={graphData} />;
-
       case "WeekCoop":
         return <WeekCoop data={graphData} />;
-
       case "WeekNonCoop":
         return <WeekNonCoop data={graphData} />;
-
       case "FirstCoop":
         return <FirstCoop data={graphData} />;
-
       case "SecondCoop":
         return <SecondCoop data={graphData} />;
-
       case "ThirdCoop":
         return <ThirdCoop data={graphData} />;
-
       default:
         return <TotalCoop data={graphData} />;
     }
@@ -82,9 +75,13 @@ const User = () => {
               <option value="TotalCoop">Total Coop Time</option>
               <option value="WeekCoop">Week Coop Time</option>
               <option value="WeekNonCoop">Week Non Coop Time</option>
-              <option value="FirstCoop">First Company Coop Time</option>
-              <option value="SecondCoop">Second Company Coop Time</option>
-              <option value="ThirdCoop">Third Company Coop Time</option>
+
+              {currentCompany
+                .filter((company) => company.hire_type === "CO")
+                .map((company, index) => {
+                  const values = ["FirstCoop", "SecondCoop", "ThirdCoop"];
+                  return <option value={values[index]}>{company.name}</option>;
+                })}
             </select>
           </div>
         </div>

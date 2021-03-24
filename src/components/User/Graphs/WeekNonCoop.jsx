@@ -12,7 +12,7 @@ const WeekNonCoop = () => {
     <GraphModel
       base={baseOptions}
       coopData={weekNonCoopData}
-      text="Non Coop Job"
+      text="Week Non-Coop Hours"
       percent={weekNonCoopData().datasets[0].data[0]}
       hours={weekTotalNonCoopTime}
     />
