@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { api } from "../../api/api";
 import { calculateData } from "./GraphData";
+import { useAuth } from "../../context/Auth-context";
 
 import TotalCoop from "./Graphs/TotalCoop";
 import WeekCoop from "./Graphs/WeekCoop";
@@ -12,7 +13,6 @@ import ThirdCoop from "./Graphs/ThirdCoop";
 import { duration } from "./GraphData";
 
 const User = () => {
-  // let username = "Ami"; // data
   const { currentUser } = useAuth();
 
   const [selectedGraph, setSelectedGraph] = useState("");
