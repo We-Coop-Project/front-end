@@ -1,9 +1,8 @@
-import React, { useState, useContext, useEffect } from "react";
-import { MemberContext } from "../NavBar";
+import React, { useState } from "react";
+// import { MemberContext } from "../NavBar";
 import { Menu, MenuButton, MenuItem, Button } from "./index";
 import "../HamburgerMenu/hamburger.css";
 import { Link } from "react-router-dom";
-import VersionBtn from "../VersionBtn";
 import { useAuth } from "../../../context/Auth-context";
 
 const Hamburger = () => {

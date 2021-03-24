@@ -47,7 +47,7 @@
   }
   /* UI */
   .NavBar {
-    @apply h-16 w-full flex items-center justify-end fixed top-0 right-0 px-4 border;
+    @apply h-16 w-full flex items-center fixed top-0 right-0 px-4 border pt-2;
   }
   .ContentContainer {
     @apply h-1/2 lg:h-full w-full lg:w-1/2 flex flex-col items-center justify-center border;
