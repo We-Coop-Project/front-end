@@ -8,6 +8,10 @@
 - Hooks
 - Chart.js
 - TailwindCSS
+- React Slick
+- SweatAlert
+- React Tooltip
+- React FirebaseUI
 
 ##### Backend
 
