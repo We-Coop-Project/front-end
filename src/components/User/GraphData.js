@@ -10,17 +10,17 @@ let secondCoopTime = 0;
 let thirdCoopTime = 0;
 // percent variables
 let coopPercent = 0;
-let remainPercent = 0;
+let remainPercent = 100;
 let weekCoopPercent = 0;
 let weekNonCoopPercent = 0;
-let weekCoopRemainPercent = 0;
-let weekNonCoopRemainPercent = 0;
+let weekCoopRemainPercent = 100;
+let weekNonCoopRemainPercent = 100;
 let firstCoopPercent = 0;
 let secondCoopPercent = 0;
 let thirdCoopPercent = 0;
-let firstCoopRemainPercent = 0;
-let secondCoopRemainPercent = 0;
-let thirdCoopRemainPercent = 0;
+let firstCoopRemainPercent = 100;
+let secondCoopRemainPercent = 100;
+let thirdCoopRemainPercent = 100;
 // other variables
 let duration = "";
 let firstCompanyName = "You don't have any comapany info!";
@@ -110,7 +110,7 @@ export const calculateData = (res) => {
   // valiables for coop duration
   let coopStartDate = res.coop_start_date;
   let coopEndDate = res.coop_end_date;
-  duration = `${coopStartDate} - ${coopEndDate}`;
+  duration = `${coopStartDate} / ${coopEndDate}`;
 
   // if statement not to show NaN!!
   if (isNaN(weekCoopPercent)) {

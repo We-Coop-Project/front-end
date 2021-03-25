@@ -17,20 +17,18 @@ const User = () => {
   const [selectedGraph, setSelectedGraph] = useState("");
   const [graphData, setGraphData] = useState({});
   const [currentCompany, setCurrentCompany] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   let uid = currentUser.uid;
 
   useEffect(() => {
     const getData = async () => {
-      // console.log(uid);
-      // let uid = "1";
-      // let uid = "2";
-      // let uid = "3";
-      // let uid = "4";
+      setIsLoading(true);
       const res = await api.get(`user_status/${uid}`);
       const calculatedData = await calculateData(res.data);
       setCurrentCompany(res.data.company_status);
       setGraphData(calculatedData);
+      setIsLoading(false);
     };
     getData();
   }, [uid]);
@@ -58,6 +56,8 @@ const User = () => {
     }
   };
 
+  isLoading ? console.log("Loading...") : console.log("Done");
+
   return (
     <div className="User">
       <div className="w-full flex justify-center">
@@ -65,7 +65,7 @@ const User = () => {
           <div className="w-full text-center">
             <h1>Hello, {currentUser.displayName}</h1>
             <p className="mt-3">
-              Your CO-OP hours : <em>{coopTime}</em> hrs
+              Goal CO-OP hours : <em>{coopTime}</em> hrs
             </p>
             <p>
               <em>{duration}</em>
