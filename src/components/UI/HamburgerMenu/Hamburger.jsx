@@ -43,6 +43,21 @@ const Hamburger = () => {
     );
   });
 
+  const styles = {
+    container: {
+      animation: "3s appear forwards",
+      
+    },
+    menuItem: {
+      animation: "2s slideIn forwards",
+      
+    },
+    line: {
+      animation: "2s shrink forwards",
+      
+    },
+  };
+
   return (
     <>
       <div className="z-50">
@@ -50,10 +65,15 @@ const Hamburger = () => {
         <MenuButton open={menuOpen} onClick={() => handleMenuClick()} />
       </div>
       <Menu open={menuOpen}>
-        {menuItems}
+        {menuItems} 
         {currentUser ? (
-          <div className="text-center mt-5">
-            <Button id="signOut" button="Sign Out" onClick={logout} />
+          <div style={styles.container}>
+            <div style={styles.menuItem}>
+              <div className="text-center mt-5">
+                <Button id="signOut" button="Sign Out" onClick={logout} />
+              </div>
+
+            </div>
           </div>
         ) : null}
       </Menu>

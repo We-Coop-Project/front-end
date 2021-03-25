@@ -4,6 +4,7 @@ import ImgContainer from "../UI/ImgContainer";
 import HomeText from "./HomeText";
 import HomeImg from "../../assets/img/home.jpg";
 
+
 const Home = () => {
   return (
     <div className="Home">
