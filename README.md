@@ -15,6 +15,7 @@ We CO-OP is a co-op time management web application. We want to do something use
 - React.js
 - Hooks
 - Chart.js
+- React loader spinner
 - TailwindCSS
 
 ##### Backend

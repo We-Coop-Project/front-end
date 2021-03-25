@@ -7,7 +7,7 @@ import MemberData from "./MemberData";
 const Aboutus = () => {
   // for loop of image path
   for (let index = 0; index < 4; index++) {
-    const image = require(`../../assets/img/members/${index + 1}.png`).default;
+    const image = require(`../../assets/img/members/${index + 1}.JPG`).default;
     MemberData[index].image = image;
   }
 

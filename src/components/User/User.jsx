@@ -11,6 +11,7 @@ import FirstCoop from "./Graphs/FirstCoop";
 import SecondCoop from "./Graphs/SecondCoop";
 import ThirdCoop from "./Graphs/ThirdCoop";
 import { coopTime, duration } from "./GraphData";
+import Loading from "./Loading";
 
 const User = () => {
   const { currentUser } = useAuth();
@@ -56,7 +57,9 @@ const User = () => {
     }
   };
 
-  isLoading ? console.log("Loading...") : console.log("Done");
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className="User">
