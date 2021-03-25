@@ -24,8 +24,6 @@ import {
 } from "./components/components";
 
 const App = () => {
-  const { currentUser } = useAuth();
-
   return (
     <AuthProvider>
       <Router>
