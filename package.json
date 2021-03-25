@@ -15,6 +15,7 @@
     "react-chartjs-2": "^2.11.1",
     "react-dom": "^17.0.1",
     "react-firebaseui": "^4.1.0",
+    "react-loader-spinner": "^4.0.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-slick": "^0.28.1",
@@ -24,6 +25,7 @@
     "web-vitals": "^1.1.1"
   },
   "scripts": {
+    "netli": "netlify init",
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
@@ -50,6 +52,7 @@
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "autoprefixer": "^9.8.6",
+    "netlify-cli": "^3.13.7",
     "postcss": "^7.0.35",
     "react-modal": "^3.12.1",
     "react-spinners": "^0.10.6",

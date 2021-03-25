@@ -8,8 +8,8 @@ const WeekCoop = () => {
     <GraphModel
       base={baseOptions}
       coopData={weekCoopData}
-      text="Week Coop Hours"
-      percent={weekCoopData().datasets[0].data[0]}
+      text="Week CO-OP Hours"
+      percent={weekCoopData().datasets[0].data[0].toFixed(1)}
       hours={weekTotalCoopTime}
     />
   );
