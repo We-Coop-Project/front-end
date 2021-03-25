@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import firebase from "../../firebase/firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import signupImg from "../../assets/img/signup.png";
 import { ContentContainer, ImgContainer, Title } from "../UI/index";
 import { useAuth } from "../../context/Auth-context";
+import { useHamOpen } from "../../context/HamOpen-context";
 
 const Signin = () => {
-  const { currentUser, uiConfig, logout } = useAuth();
+  const { currentUser, uiConfig } = useAuth();
+  const { menuOpen } = useHamOpen();
+
   const history = useHistory();
+
+  useEffect(() => {
+    const slider = document.querySelector("#signup");
+    if (menuOpen) {
+      slider.style.zIndex = -1;
+    } else {
+      slider.style.zIndex = 0;
+    }
+  }, [menuOpen]);
 
   return (
     <div id="signup" className="Home">
@@ -19,18 +31,11 @@ const Signin = () => {
         <Title title="Sign In" />
 
         {currentUser ? (
-          //   <span>
-          //     <div>Signed In!</div>
-          //     <button onClick={logout}>Sign out!</button>
-          //     <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
-          //     <img alt="profile pic" src={firebase.auth().currentUser.photoURL} />
-          //   </span>
           history.push("/user")
         ) : (
           <StyledFirebaseAuth
             uiConfig={uiConfig}
             firebaseAuth={firebase.auth()}
-            className="z-10"
           />
         )}
       </ContentContainer>

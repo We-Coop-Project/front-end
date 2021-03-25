@@ -1,14 +1,13 @@
-import React, { useState, useContext, useEffect } from "react";
-import { MemberContext } from "../NavBar";
+import React from "react";
 import { Menu, MenuButton, MenuItem, Button } from "./index";
 import "../HamburgerMenu/hamburger.css";
 import { Link } from "react-router-dom";
-import VersionBtn from "../VersionBtn";
 import { useAuth } from "../../../context/Auth-context";
+import { useHamOpen } from "../../../context/HamOpen-context";
 
 const Hamburger = () => {
   const { currentUser, logout } = useAuth();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { menuOpen, setMenuOpen } = useHamOpen();
 
   const handleMenuClick = () => {
     setMenuOpen(!menuOpen);

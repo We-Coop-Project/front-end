@@ -115,4 +115,7 @@
   .slick-slider {
     @apply outline-none;
   }
+  .loading {
+    @apply block absolute inset-0 m-auto;
+  }
 }

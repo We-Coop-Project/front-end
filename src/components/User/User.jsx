@@ -10,6 +10,7 @@ import FirstCoop from "./Graphs/FirstCoop";
 import SecondCoop from "./Graphs/SecondCoop";
 import ThirdCoop from "./Graphs/ThirdCoop";
 import { duration } from "./GraphData";
+import { useAuth } from "../../context/Auth-context";
 
 const User = () => {
   // let username = "Ami"; // data
@@ -22,7 +23,9 @@ const User = () => {
   useEffect(() => {
     const getData = async () => {
       // TEST
-      let uid = "1";
+      let uid = currentUser.uid;
+      console.log(currentUser.uid);
+
       // let uid = "2";
       // let uid = "3";
       // let uid = "4";

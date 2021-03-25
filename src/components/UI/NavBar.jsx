@@ -1,8 +1,6 @@
-import React, { createContext, Provider, useState } from "react";
+import React, { createContext, useState } from "react";
 import VersionBtn from "./VersionBtn";
 import Hamburger from "./HamburgerMenu/Hamburger";
-// import MenuItem from "./HamburgerMenu/MenuItem";
-// import NonHamburger from "./HamburgerMenu/NonHamburger";
 import Logo from "../../assets/img/logo01.png";
 
 export const MemberContext = createContext(false, () => {});
@@ -13,7 +11,7 @@ const NavBar = () => {
 
   return (
     <MemberContext.Provider value={[isMember, setIsMember]}>
-      <div className="NavBar flex-row justify-between">
+      <div className="NavBar flex-row justify-between z-50">
         <div>
           <img className="w-5/12 lg:w-2/12 p-2" src={Logo} alt="top" />
         </div>

@@ -10,7 +10,7 @@ const Input = (props) => {
         step={props.step}
         min={props.min}
         placeholder={props.placeholder}
-        oninput={props.oninput}
+        onInput={props.onInput}
         onChange={props.onChange}
         onFocus={props.onFocus}
         onBlur={props.onBlur}
