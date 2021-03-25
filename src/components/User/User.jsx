@@ -76,7 +76,7 @@ const User = () => {
           <div className="w-full flex justify-center">
             <select
               onChange={selectHandler}
-              className="h-8 w-1/2 text-xs text-gray-400 rounded outline-none px-2"
+              className="h-8 w-1/2 text-xs text-gray-600 rounded outline-none px-2"
             >
               <option value="TotalCoop">Total CO-OP Time</option>
               <option value="WeekCoop">Week CO-OP Time</option>

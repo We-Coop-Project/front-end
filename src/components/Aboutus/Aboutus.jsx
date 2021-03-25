@@ -15,10 +15,10 @@ const Aboutus = () => {
     <div className="Aboutus">
       <div className="w-full text-center">
         <Title title="About Us" />
-        <p className="mb-4">
+        <p className="mb-2 sm:mb-4">
           We want to do something useful for students who go to school like us.
           This app was created in that process, and we hope it will be useful to
-          everyone. Thank you!
+          everyone.
         </p>
         {/* Members */}
         <div className="w-full flex flex-wrap lg:flex-no-wrap">
