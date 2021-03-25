@@ -54,7 +54,6 @@ const Sliders = () => {
             dataEventOff="blur"
             autoComplete="off"
           />
-
           <ReactTooltip id="for-end-date" efect="solid" place="bottom">
             When will you finish your co-op job?
           </ReactTooltip>
@@ -88,7 +87,7 @@ const Sliders = () => {
           />
         </div>
         <div className="focus:outline-none z-10">
-          <InputTab id="company1" type="text" placeholder="#1 Company name" />
+          <InputTab id="company1" type="text" placeholder="Company name" />
           <select
             className="Input"
             style={{ textAlignLast: "center" }}
