@@ -8,9 +8,9 @@ const TotalCoop = () => {
     <GraphModel
       base={baseOptions}
       coopData={totalCoopData}
-      text="Total Coop Hours"
-      percent={totalCoopData().datasets[0].data[0]}
-      hours={totalCoopTime}
+      text="Total CO-OP Hours"
+      percent={totalCoopData().datasets[0].data[0].toFixed(1)}
+      hours={totalCoopTime.toFixed(1)}
     />
   );
 };

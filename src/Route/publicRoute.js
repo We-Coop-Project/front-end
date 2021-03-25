@@ -2,8 +2,7 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import Loading from "../components/User/Loading";
 import { Consumer } from "../context/Auth-context";
-
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PublicRoute = ({ component: Component, restricted, ...rest }) => {
   return (
     <Consumer>
       {(context) => {
@@ -13,17 +12,17 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         return (
           <Route
             {...rest}
-            render={(props) =>
-              context.currentUser ? (
-                <Component {...props} />
-              ) : (
+            render={(props) => {
+              return context.currentUser && restricted ? (
                 <Redirect to="/" />
-              )
-            }
+              ) : (
+                <Component {...props} />
+              );
+            }}
           />
         );
       }}
     </Consumer>
   );
 };
-export default PrivateRoute;
+export default PublicRoute;

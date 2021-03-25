@@ -1,11 +1,10 @@
-import React, { createContext, Provider, useState } from "react";
+import React, { createContext, useState } from "react";
 import VersionBtn from "./VersionBtn";
 import Hamburger from "./HamburgerMenu/Hamburger";
-// import MenuItem from "./HamburgerMenu/MenuItem";
-// import NonHamburger from "./HamburgerMenu/NonHamburger";
 import Logo from "../../assets/img/logo01.png";
+import { Link } from "react-router-dom";
 
-export const MemberContext = createContext(false, () => {});
+export const MemberContext = createContext([false, () => {}]);
 
 const NavBar = () => {
   // メンバーであるかどうかの判断で切替
@@ -13,11 +12,13 @@ const NavBar = () => {
 
   return (
     <MemberContext.Provider value={[isMember, setIsMember]}>
-      <div className="NavBar flex-row justify-between">
+      <div className="NavBar">
         <div>
-          <img className="w-5/12 lg:w-2/12 p-2" src={Logo} alt="top" />
-        </div>
-        <div className="flex">
+        <Link to={'/'}>
+          <img className="w-5/12 lg:w-2/12 p-2  md:w-3/12" src={Logo} alt="top" />
+        </Link>
+        </div> 
+        <div className="flex items-center">
           <VersionBtn />
           <Hamburger />
         </div>

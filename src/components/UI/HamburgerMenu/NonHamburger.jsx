@@ -17,7 +17,7 @@ const NonHamburger = () => {
   // ----------------------------------
 
   const menuItems = menu.map((val, index) => {
-    console.log("yooooo", val);
+    
     return (
       <Link to={`/${pathArray[index]}`}>
         <li className="inline-block cursor-pointer p-6 ">{val}</li>
