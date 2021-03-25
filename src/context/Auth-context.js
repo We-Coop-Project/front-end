@@ -3,12 +3,15 @@ import firebase from "../firebase/firebase";
 
 const AuthContext = createContext();
 
+export const Consumer = AuthContext.Consumer;
+
 export function useAuth() {
   return useContext(AuthContext);
 }
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     firebase
@@ -17,10 +20,12 @@ export function AuthProvider({ children }) {
       .then(() => {
         firebase.auth().onAuthStateChanged((user) => {
           setCurrentUser(user);
+          setLoading(false);
         });
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
       });
   }, []);
 
@@ -51,6 +56,7 @@ export function AuthProvider({ children }) {
 
   const value = {
     currentUser,
+    loading,
     uiConfig,
     logout,
   };

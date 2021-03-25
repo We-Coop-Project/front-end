@@ -5,7 +5,7 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
-import { AuthProvider, useAuth } from "./context/Auth-context";
+import { AuthProvider } from "./context/Auth-context";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -30,11 +30,6 @@ const App = () => {
         <Route path="/" component={NavBar} />
         <div className="App">
           <Switch>
-            {/* <Route path="/" exact component={Home}></Route>
-            <Route path="/aboutus" exact component={Aboutus}></Route>
-            <Route path="/contact" exact component={Contact}></Route>
-            <Route path="/signin" exact component={Signin}></Route>
-            <Route path="/signout" exact component={Home}></Route> */}
             <PublicRoute exact path="/" restricted={false} component={Home} />
             <PublicRoute
               exact
