@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import { InputTab, NextArrow, BackArrow } from "../UI/index";
 import ReactTooltip from "react-tooltip";
 
-const Sliders = () => {
+const Sliders = (props) => {
   const settings = {
     nextArrow: <NextArrow type="next" />,
     prevArrow: <BackArrow type="prev" />,
@@ -41,6 +41,8 @@ const Sliders = () => {
             dataEvent="focus"
             dataEventOff="blur"
             autoComplete="off"
+            onChange={props.onChangeCoopStartDate}
+            value={props.coopStartDate}
           />
 
           <ReactTooltip id="for-end-date" efect="solid" place="bottom">
@@ -59,6 +61,8 @@ const Sliders = () => {
             dataEvent="focus"
             dataEventOff="blur"
             autoComplete="off"
+            onChange={props.onChangeCoopEndDate}
+            value={props.coopEndDate}
           />
 
           <ReactTooltip id="for-coop-hours" efect="solid" place="bottom">
@@ -73,34 +77,52 @@ const Sliders = () => {
             dataEvent="focus"
             dataEventOff="blur"
             autoComplete="off"
+            onChange={props.onChangeCoopHours}
+            value={props.coopHours}
           />
         </div>
         <div>
-          <InputTab id="company" type="text" placeholder="#1 Company name" />
+          <InputTab
+            id="company"
+            type="text"
+            placeholder="#1 Company name"
+            onChange={props.onChangeCompany}
+            disabled={props.disabled}
+          />
           <select
             className="Input"
             style={{ textAlignLast: "center" }}
             id="isCoop"
+            onChange={props.onChangeIsCoop}
+            disabled={props.disabled}
           >
             <option value="" disabled selected>
               Co-op Job?
             </option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+            <option value="CO">Yes</option>
+            <option value="OT">No</option>
           </select>
         </div>
         <div>
-          <InputTab id="company" type="text" placeholder="#2 Company name" />
+          <InputTab
+            id="company"
+            type="text"
+            placeholder="#2 Company name"
+            onChange={props.onChangeCompany}
+            disabled={props.disabled}
+          />
           <select
             className="Input"
             style={{ textAlignLast: "center" }}
             id="isCoop"
+            onChange={props.onChangeIsCoop}
+            disabled={props.disabled}
           >
             <option value="" disabled selected>
               Co-op Job?
             </option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+            <option value="CO">Yes</option>
+            <option value="OT">No</option>
           </select>
         </div>
       </Slider>

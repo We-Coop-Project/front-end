@@ -19,6 +19,8 @@ const Input = (props) => {
         data-event={props.dataEvent}
         data-event-off={props.dataEventOff}
         autocomplete={props.autoComplete}
+        disabled={props.disabled}
+        value={props.value}
       />
     </div>
   );
