@@ -1,8 +1,9 @@
 import React from "react";
 import ContentContainer from "../UI/ContentContainer";
 import ImgContainer from "../UI/ImgContainer";
-import FontCheck from "./FontCheck";
+import HomeText from "./HomeText";
 import HomeImg from "../../assets/img/home.jpg";
+
 
 const Home = () => {
   return (
@@ -11,7 +12,7 @@ const Home = () => {
         <img className="Img" src={HomeImg} alt="top" />
       </ImgContainer>
       <ContentContainer>
-        <FontCheck />
+        <HomeText />
       </ContentContainer>
     </div>
   );

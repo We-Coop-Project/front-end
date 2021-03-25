@@ -51,7 +51,7 @@ const Sliders = () => {
             type="text"
             min="0"
             placeholder="Co-op End Date"
-            oninput="this.value = Math.abs(this.value)"
+            onInput="this.value = Math.abs(this.value)"
             onFocus={onFocusHandle}
             onBlur={onBlurHandle}
             data-tip
