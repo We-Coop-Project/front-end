@@ -18,7 +18,7 @@ const Input = (props) => {
         data-for={props.dataFor}
         data-event={props.dataEvent}
         data-event-off={props.dataEventOff}
-        autocomplete={props.autoComplete}
+        autoComplete={props.autoComplete}
       />
     </div>
   );

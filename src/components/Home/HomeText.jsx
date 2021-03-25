@@ -3,21 +3,21 @@ import Button from "../UI/Button";
 import { useAuth } from "../../context/Auth-context";
 import { Link } from "react-router-dom";
 
-const FontCheck = () => {
+const HomeText = () => {
   const { currentUser } = useAuth();
 
   return (
-    <div className="text-center  px-8">
-      <h1>What is We CO-OP</h1>
+    <div className="text-center px-8">
+      <h1>We CO-OP</h1>
       <br />
       <p>
         This app manages the co-op's time calculation just by entering your
         school information.
       </p>
-      <br />
+
       <p>
-        This app manages the co-op's time calculation just by entering your
-        school information.
+        If you have a Google or Facebook account, it only takes 3 minutes to set
+        up and it's easy to manage. Let's try!
       </p>
       <br />
       {!currentUser ? (
@@ -29,4 +29,4 @@ const FontCheck = () => {
   );
 };
 
-export default FontCheck;
+export default HomeText;
