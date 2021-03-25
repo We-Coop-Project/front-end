@@ -11,7 +11,7 @@ import FirstCoop from "./Graphs/FirstCoop";
 import SecondCoop from "./Graphs/SecondCoop";
 import ThirdCoop from "./Graphs/ThirdCoop";
 import { coopTime, duration } from "./GraphData";
-import Loading from "./Loading";
+// import Loading from "./Loading";
 
 const User = () => {
   const { currentUser } = useAuth();
