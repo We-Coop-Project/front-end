@@ -1,4 +1,5 @@
 // time variables
+let coopTime = 0;
 let totalCoopTime = 0;
 let weekCoopTime = 0;
 let weekNonCoopTime = 0;
@@ -9,17 +10,17 @@ let secondCoopTime = 0;
 let thirdCoopTime = 0;
 // percent variables
 let coopPercent = 0;
-let remainPercent = 0;
+let remainPercent = 100;
 let weekCoopPercent = 0;
 let weekNonCoopPercent = 0;
-let weekCoopRemainPercent = 0;
-let weekNonCoopRemainPercent = 0;
+let weekCoopRemainPercent = 100;
+let weekNonCoopRemainPercent = 100;
 let firstCoopPercent = 0;
 let secondCoopPercent = 0;
 let thirdCoopPercent = 0;
-let firstCoopRemainPercent = 0;
-let secondCoopRemainPercent = 0;
-let thirdCoopRemainPercent = 0;
+let firstCoopRemainPercent = 100;
+let secondCoopRemainPercent = 100;
+let thirdCoopRemainPercent = 100;
 // other variables
 let duration = "";
 let firstCompanyName = "You don't have any comapany info!";
@@ -27,8 +28,6 @@ let secondCompanyName = "You don't have any comapany info!";
 let thirdCompanyName = "You don't have any comapany info!";
 
 export const calculateData = (res) => {
-  // let weekCoopTime;
-  // let weekNonCoopTime;
   weekTotalCoopTime = res.week_coop_working_hours;
   weekTotalNonCoopTime = res.week_non_coop_working_hours;
 
@@ -82,7 +81,7 @@ export const calculateData = (res) => {
   }
 
   // variables & calculation for total coop and week coop
-  let coopTime = res.coop_hours;
+  coopTime = res.coop_hours;
   let remainTime = coopTime - totalCoopTime;
   coopPercent = Math.round((totalCoopTime / coopTime) * 1000) / 10;
   remainPercent = Math.round((remainTime / coopTime) * 1000) / 10;
@@ -111,9 +110,9 @@ export const calculateData = (res) => {
   // valiables for coop duration
   let coopStartDate = res.coop_start_date;
   let coopEndDate = res.coop_end_date;
-  duration = `${coopStartDate} - ${coopEndDate}`;
+  duration = `${coopStartDate} / ${coopEndDate}`;
 
-  // if statement not to show Nan!!
+  // if statement not to show NaN!!
   if (isNaN(weekCoopPercent)) {
     weekCoopPercent = 0;
     weekCoopRemainPercent = 100;
@@ -218,6 +217,7 @@ const thirdCoopData = () => {
 };
 
 export {
+  coopTime,
   totalCoopTime,
   weekTotalCoopTime,
   weekTotalNonCoopTime,
