@@ -7,10 +7,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={(props) => {
-        return currentUser ? <Component {...props} /> : <Redirect to="/" />;
-      }}
-    ></Route>
+      render={(props) =>
+        currentUser ? <Component {...props} /> : <Redirect to="/" />
+      }
+    />
   );
 };
 

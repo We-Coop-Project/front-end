@@ -90,7 +90,7 @@ const User = () => {
                 .map((company, index) => {
                   const values = ["FirstCoop", "SecondCoop", "ThirdCoop"];
                   return (
-                    <option value={values[index]}>
+                    <option value={values[index]} key={index}>
                       CO-OP Time at {company.name}
                     </option>
                   );
