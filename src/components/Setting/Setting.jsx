@@ -1,9 +1,124 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import settingImg from "../../assets/img/setting.png";
 import Sliders from "./Sliders";
 import { ContentContainer, ImgContainer, Title, SubmitBtn } from "../UI/index";
+import { useAuth } from "../../context/Auth-context";
+import { api } from "../../api/api";
 
 const Signin = () => {
+  const { currentUser } = useAuth();
+  const history = useHistory();
+  const [coopStartDate, setCoopStartDate] = useState("");
+  const [coopEndDate, setCoopEndDate] = useState("");
+  const [coopHours, setCoopHours] = useState("");
+  const [company, setCompany] = useState("");
+  const [isCoop, setIsCoop] = useState("");
+  const [disabled, setDisabled] = useState(false);
+  const [userStatusData, setUserStatusData] = useState([]);
+
+  useEffect(() => {
+    api
+      .get("user_status/")
+      .then((res) => setUserStatusData(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const settingHandler = async () => {
+    const hasId = userStatusData.find((el) => el.uid === currentUser.uid);
+    if (hasId) {
+      if (coopStartDate && coopEndDate && coopHours) {
+        api
+          .post(`user_status/${currentUser.uid}/`, {
+            coop_start_date: coopStartDate,
+            coop_end_date: coopEndDate,
+            coop_hours: parseInt(coopHours),
+          })
+          .then(() => {
+            alert("Your coop info is updated");
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      } else if (company && isCoop) {
+        api
+          .post("company/", {
+            name: company,
+            hire_type: isCoop,
+            user: currentUser.uid,
+          })
+          .then(() => {
+            alert("Your company info is updated");
+            setCompany("");
+            setIsCoop("");
+            setDisabled(true);
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      } else {
+        alert("Please fill out your coop info");
+      }
+    } else {
+      if (coopStartDate && coopEndDate && coopHours) {
+        api
+          .post(`user_status/`, {
+            uid: currentUser.uid,
+            coop_start_date: coopStartDate,
+            coop_end_date: coopEndDate,
+            coop_hours: parseInt(coopHours),
+          })
+          .then(() => {
+            alert("Your coop info is registered");
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      } else if (company && isCoop) {
+        api
+          .post("company/", {
+            name: company,
+            hire_type: isCoop,
+            user: currentUser.uid,
+          })
+          .then(() => {
+            alert("Your company info is registered");
+            setCompany("");
+            setIsCoop("");
+            setDisabled(true);
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      } else {
+        alert("Please fill out your coop info");
+      }
+    }
+    setCoopStartDate("");
+    setCoopEndDate("");
+    setCoopHours("");
+  };
+
+  const onChangeCoopStartDate = (e) => {
+    setCoopStartDate(e.target.value);
+  };
+
+  const onChangeCoopEndDate = (e) => {
+    setCoopEndDate(e.target.value);
+  };
+
+  const onChangeCoopHours = (e) => {
+    setCoopHours(e.target.value);
+  };
+
+  const onChangeCompany = (e) => {
+    setCompany(e.target.value);
+  };
+
+  const onChangeIsCoop = (e) => {
+    setIsCoop(e.target.value);
+  };
+
   return (
     <div id="setting" className="Home">
       <ImgContainer>
@@ -11,8 +126,18 @@ const Signin = () => {
       </ImgContainer>
       <ContentContainer>
         <Title title="Setting" />
-        <Sliders />
-        <SubmitBtn />
+        <Sliders
+          onChangeCoopStartDate={onChangeCoopStartDate}
+          onChangeCoopEndDate={onChangeCoopEndDate}
+          onChangeCoopHours={onChangeCoopHours}
+          onChangeCompany={onChangeCompany}
+          onChangeIsCoop={onChangeIsCoop}
+          disabled={disabled}
+          coopStartDate={coopStartDate}
+          coopEndDate={coopEndDate}
+          coopHours={coopHours}
+        />
+        <SubmitBtn onClick={settingHandler} />
       </ContentContainer>
     </div>
   );

@@ -16,7 +16,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     firebase
       .auth()
-      .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
       .then(() => {
         firebase.auth().onAuthStateChanged((user) => {
           setCurrentUser(user);
@@ -47,7 +47,8 @@ export function AuthProvider({ children }) {
       .auth()
       .signOut()
       .then(() => {
-        console.log("Login Successfully");
+        console.log("Logout Successfully");
+        sessionStorage.clear();
       })
       .catch((err) => {
         console.log(err);

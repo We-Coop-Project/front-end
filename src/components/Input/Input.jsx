@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { api } from "../../api/api";
+import { useAuth } from "../../context/Auth-context";
 import inputImg from "../../assets/img/input.png";
 import {
   ContentContainer,
@@ -9,6 +11,60 @@ import {
 } from "../UI/index";
 
 const Input = () => {
+  const { currentUser } = useAuth();
+  const [companyName, setCompanyName] = useState("");
+  const [daysWork, setDaysWork] = useState("");
+  const [hoursWork, setHoursWork] = useState("");
+  const [comanyData, setCompanyData] = useState([]);
+
+  useEffect(() => {
+    api
+      .get("company/")
+      .then((res) => setCompanyData(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const settingHandler = async () => {
+    const indexCompanyName = comanyData.findIndex(
+      (el) => el.name === companyName
+    );
+    if (!(indexCompanyName === -1)) {
+      if (companyName && daysWork && hoursWork) {
+        api
+          .post(`company/${comanyData[indexCompanyName]["id"]}/`, {
+            name: companyName,
+            working_time: parseInt(daysWork),
+            working_days: parseInt(hoursWork),
+          })
+          .then(() => {
+            alert("Input data is updated");
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      } else {
+        alert("Please fill out");
+      }
+    } else {
+      alert("Company doesn't exist.");
+    }
+    setCompanyName("");
+    setDaysWork("");
+    setHoursWork("");
+  };
+
+  const onChangeCompanyName = (e) => {
+    setCompanyName(e.target.value);
+  };
+
+  const onChangeDaysWork = (e) => {
+    setDaysWork(e.target.value);
+  };
+
+  const onChangeHourswork = (e) => {
+    setHoursWork(e.target.value);
+  };
+
   return (
     <div id="input" className="Home">
       <ImgContainer>
@@ -16,15 +72,29 @@ const Input = () => {
       </ImgContainer>
       <ContentContainer>
         <Title title="Input" />
-        <InputTab id="company" type="text" placeholder="Company Name" />
-        <InputTab id="days" type="number" placeholder="Days of your worked" />
+        <InputTab
+          id="company"
+          type="text"
+          placeholder="Company Name"
+          onChange={onChangeCompanyName}
+          value={companyName}
+        />
+        <InputTab
+          id="days"
+          type="number"
+          placeholder="Days of your worked"
+          onChange={onChangeDaysWork}
+          value={daysWork}
+        />
         <InputTab
           id="hours"
           type="number"
           step="0.25"
           placeholder="Hours of your worked"
+          onChange={onChangeHourswork}
+          value={hoursWork}
         />
-        <SubmitBtn />
+        <SubmitBtn onClick={settingHandler} />
       </ContentContainer>
     </div>
   );
