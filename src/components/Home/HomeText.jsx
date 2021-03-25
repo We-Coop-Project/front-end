@@ -1,25 +1,30 @@
 // This file will be "Content.jsx". Content will be How to Use We-Coop text.
-import { Link } from 'react-router-dom';
-import Button from '../UI/Button'
+import Button from "../UI/Button";
+import { useAuth } from "../../context/Auth-context";
+import { Link } from "react-router-dom";
 
 const HomeText = () => {
+  const { currentUser } = useAuth();
+
   return (
-    <div className="text-center  px-8">
+    <div className="text-center px-8">
       <h1>We CO-OP</h1>
       <br />
       <p>
         This app manages the co-op's time calculation just by entering your
         school information.
       </p>
-      
+
       <p>
-        If you have a Google or Facebook account, it only takes 3 minutes to set up and it's easy to manage. Let's try!
+        If you have a Google or Facebook account, it only takes 3 minutes to set
+        up and it's easy to manage. Let's try!
       </p>
       <br />
-      <Link to={'/signin'}>
-        <Button className="p-0" id="signIn" button="Sign In"/>
-      </Link>
-
+      {!currentUser ? (
+        <Link to={"/signin"}>
+          <Button className="p-0" id="signout" button="Sign In" />
+        </Link>
+      ) : null}
     </div>
   );
 };

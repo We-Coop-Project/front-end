@@ -6,6 +6,8 @@ import {
   Switch,
 } from "react-router-dom";
 import { AuthProvider } from "./context/Auth-context";
+import { HamOpenProvider } from "./context/HamOpen-context";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -26,6 +28,7 @@ import {
 const App = () => {
   return (
     <AuthProvider>
+      <HamOpenProvider>
       <Router>
         <Route path="/" component={NavBar} />
         <div className="App">
@@ -61,6 +64,8 @@ const App = () => {
           </Switch>
         </div>
       </Router>
+      </HamOpenProvider>
+    
     </AuthProvider>
   );
 };

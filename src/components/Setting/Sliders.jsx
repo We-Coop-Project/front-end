@@ -1,13 +1,16 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import Slider from "react-slick";
 import { InputTab, NextArrow, BackArrow } from "../UI/index";
 import ReactTooltip from "react-tooltip";
+import { useHamOpen } from "../../context/HamOpen-context";
 
 const Sliders = (props) => {
+  const { menuOpen } = useHamOpen();
+
   const settings = {
     nextArrow: <NextArrow type="next" />,
     prevArrow: <BackArrow type="prev" />,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -23,10 +26,19 @@ const Sliders = (props) => {
     e.target.type = "text";
   }, []);
 
+  useEffect(() => {
+    const slider = document.querySelector("#slider");
+    if (menuOpen) {
+      slider.style.zIndex = -1;
+    } else {
+      slider.style.zIndex = 0;
+    }
+  }, [menuOpen]);
+
   return (
-    <div className="relative z-10">
-      <Slider {...settings} className="w-80 text-center flex z-10">
-        <div className="focus:outline-none z-10">
+    <div id="slider" className="relative">
+      <Slider {...settings} className="w-80 text-center flex">
+        <div className="focus:outline-none">
           <ReactTooltip id="for-start-date" efect="solid" place="bottom">
             When did you start your co-op job?
           </ReactTooltip>
@@ -44,7 +56,6 @@ const Sliders = (props) => {
             onChange={props.onChangeCoopStartDate}
             value={props.coopStartDate}
           />
-
           <ReactTooltip id="for-end-date" efect="solid" place="bottom">
             When will you finish your co-op job?
           </ReactTooltip>
@@ -53,7 +64,7 @@ const Sliders = (props) => {
             type="text"
             min="0"
             placeholder="Co-op End Date"
-            onInput="this.value = Math.abs(this.value)"
+            // onInput="this.value = Math.abs(this.value)"
             onFocus={onFocusHandle}
             onBlur={onBlurHandle}
             data-tip
@@ -81,9 +92,9 @@ const Sliders = (props) => {
             value={props.coopHours}
           />
         </div>
-        <div>
+        <div className="focus:outline-none z-10">
           <InputTab
-            id="company"
+            id="company1"
             type="text"
             placeholder="#1 Company name"
             onChange={props.onChangeCompany}
@@ -92,7 +103,7 @@ const Sliders = (props) => {
           <select
             className="Input"
             style={{ textAlignLast: "center" }}
-            id="isCoop"
+            id="isCoop1"
             onChange={props.onChangeIsCoop}
             disabled={props.disabled}
           >
@@ -103,18 +114,18 @@ const Sliders = (props) => {
             <option value="OT">No</option>
           </select>
         </div>
-        <div>
+        {/* <div className="focus:outline-none z-10">
           <InputTab
-            id="company"
+            id="company2"
             type="text"
             placeholder="#2 Company name"
             onChange={props.onChangeCompany}
             disabled={props.disabled}
           />
           <select
-            className="Input"
+            className="Input2"
             style={{ textAlignLast: "center" }}
-            id="isCoop"
+            id="isCoop2"
             onChange={props.onChangeIsCoop}
             disabled={props.disabled}
           >
@@ -124,7 +135,7 @@ const Sliders = (props) => {
             <option value="CO">Yes</option>
             <option value="OT">No</option>
           </select>
-        </div>
+        </div>  */}
       </Slider>
     </div>
   );

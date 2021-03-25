@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-// import { MemberContext } from "../NavBar";
+import React from "react";
 import { Menu, MenuButton, MenuItem, Button } from "./index";
 import "../HamburgerMenu/hamburger.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../context/Auth-context";
+import { useHamOpen } from "../../../context/HamOpen-context";
 
 const Hamburger = () => {
   const { currentUser, logout } = useAuth();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { menuOpen, setMenuOpen } = useHamOpen();
 
   const handleMenuClick = () => {
     setMenuOpen(!menuOpen);
@@ -46,15 +46,12 @@ const Hamburger = () => {
   const styles = {
     container: {
       animation: "3s appear forwards",
-      
     },
     menuItem: {
       animation: "2s slideIn forwards",
-      
     },
     line: {
       animation: "2s shrink forwards",
-      
     },
   };
 
@@ -62,17 +59,16 @@ const Hamburger = () => {
     <>
       <div className="z-50">
         {/*  もし左上なら、absolute top-1/3 left-3 z-50 */}
-        <MenuButton open={menuOpen} onClick={() => handleMenuClick()} />
+        <MenuButton onClick={() => handleMenuClick()} />
       </div>
-      <Menu open={menuOpen}>
-        {menuItems} 
+      <Menu>
+        {menuItems}
         {currentUser ? (
           <div style={styles.container}>
             <div style={styles.menuItem}>
               <div className="text-center mt-5">
                 <Button id="signOut" button="Sign Out" onClick={logout} />
               </div>
-
             </div>
           </div>
         ) : null}

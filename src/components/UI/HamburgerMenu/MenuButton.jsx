@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useHamOpen } from "../../../context/HamOpen-context";
 
 const MenuButton = (props) => {
-  const [open, setOpen] = useState(props.open ? props.open : false);
-
-  useEffect(() => {
-    if (props.open !== open) {
-      setOpen(props.open);
-    }
-  }, [props]);
+  // const [open, setOpen] = useState(props.open ? props.open : false);
+  const { menuOpen, setMenuOpen } = useHamOpen();
 
   const handleClick = () => {
-    setOpen(!open);
+    setMenuOpen(!menuOpen);
   };
 
   return (
@@ -26,17 +22,17 @@ const MenuButton = (props) => {
     >
       <div
         className={`transition-all duration-200 ease h-1 w-6 bg-white transform${
-          open ? " rotate-45" : "-none"
+          menuOpen ? " rotate-45" : "-none"
         } origin-top-left mb-1`}
       />
       <div
         className={`transition-all duration-200 ease h-1 w-6 bg-white opacity${
-          open ? "-0" : "-100"
+          menuOpen ? "-0" : "-100"
         }`}
       />
       <div
         className={`transition-all duration-200 ease h-1 w-6 bg-white transform${
-          open ? " -rotate-45" : "-none"
+          menuOpen ? " -rotate-45" : "-none"
         } origin-bottom-left mt-1`}
       />
     </div>
