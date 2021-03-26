@@ -46,8 +46,7 @@ const Contact = () => {
           "Message: \n" +
           message,
       };
-      // const url = process.env.REACT_APP_SLACK;
-      const url = "";
+      const url = process.env.REACT_APP_SLACK;
 
       fetch(url, {
         method: "POST",
@@ -97,7 +96,7 @@ const Contact = () => {
             }}
           />
         </form>
-        <SubmitBtn onClick={submitForm} />
+        <SubmitBtn onClick={submitForm} button="Submit" />
       </ContentContainer>
     </div>
   );

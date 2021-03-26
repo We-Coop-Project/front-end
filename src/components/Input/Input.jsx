@@ -13,7 +13,6 @@ import {
 import swal from "sweetalert";
 
 const Input = () => {
-  const { currentUser } = useAuth();
   const history = useHistory();
   const [companyName, setCompanyName] = useState("");
   const [daysWork, setDaysWork] = useState("");

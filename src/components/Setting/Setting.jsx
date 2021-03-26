@@ -43,16 +43,16 @@ const Setting = () => {
                 user: currentUser.uid,
               })
               .then(() => {
-                alert("Your info is updated");
+                swal("Your info is updated");
                 setDisabled(true);
                 history.push("/input");
               })
               .catch((err) => {
-                alert(err);
+                swal(err);
               });
           })
           .catch((err) => {
-            alert(err);
+            swal(err);
           });
       } else if (coopStartDate && coopEndDate && coopHours) {
         api
@@ -111,17 +111,17 @@ const Setting = () => {
                 user: currentUser.uid,
               })
               .then(() => {
-                alert("Your info is registed");
+                swal("Your info is registed!");
                 setDisabled(true);
                 history.push("/input");
               })
               .catch((err) => {
-                alert(err);
+                swal(err);
               });
             history.push("/input");
           })
           .catch((err) => {
-            alert(err);
+            swal(err);
           });
       } else if (coopStartDate && coopEndDate && coopHours) {
         api
