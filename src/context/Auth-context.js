@@ -47,7 +47,6 @@ export function AuthProvider({ children }) {
       .auth()
       .signOut()
       .then(() => {
-        console.log("Logout Successfully");
         sessionStorage.clear();
       })
       .catch((err) => {
