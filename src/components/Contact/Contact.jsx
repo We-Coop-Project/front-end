@@ -46,7 +46,7 @@ const Contact = () => {
           "Message: \n" +
           message,
       };
-      // const url = process.env.REACT_APP_SLACK;
+      const url = process.env.REACT_APP_SLACK;
       const url = "";
 
       fetch(url, {
