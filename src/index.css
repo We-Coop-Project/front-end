@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.slick-list {
+  padding-bottom: 25px !important;
+}
+
 @layer base {
   body {
     @apply font-sanspro text-white dark:text-gray-400 bg-primary dark:bg-secondary select-none;
@@ -88,7 +92,7 @@
   .Input {
     @apply bg-white text-primary dark:text-secondary
     placeholder-primary dark:placeholder-secondary focus:placeholder-opacity-0  focus:outline-none
-    rounded-lg text-center py-3 my-3 w-64 lg:w-72;
+    rounded-lg text-center py-3 my-2 w-64 lg:w-72;
   }
   .swal-title {
     @apply text-primary dark:text-secondary;
@@ -105,7 +109,7 @@
   }
   .hintInner {
     @apply flex justify-center align-middle
-    rounded-full       border border-white w-6 h-6 cursor-pointer;
+    rounded-full border border-white w-6 h-6 cursor-pointer;
   }
   .popupContainer {
     @apply absolute left-0 bg-white text-primary dark:text-secondary

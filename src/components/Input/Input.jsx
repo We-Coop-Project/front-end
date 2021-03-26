@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { api } from "../../api/api";
-import { useAuth } from "../../context/Auth-context";
 import inputImg from "../../assets/img/input.png";
 import {
   ContentContainer,
@@ -9,9 +8,9 @@ import {
   InputTab,
   SubmitBtn,
 } from "../UI/index";
+import swal from "sweetalert";
 
 const Input = () => {
-  const { currentUser } = useAuth();
   const [companyName, setCompanyName] = useState("");
   const [daysWork, setDaysWork] = useState("");
   const [hoursWork, setHoursWork] = useState("");
@@ -37,16 +36,22 @@ const Input = () => {
             working_days: parseInt(hoursWork),
           })
           .then(() => {
-            alert("Input data is updated");
+            swal("Input data is updated!");
           })
           .catch((err) => {
-            alert(err);
+            swal(err);
           });
       } else {
-        alert("Please fill out");
+        swal({
+          title: "Oops...",
+          text: "Please fill out.",
+        });
       }
     } else {
-      alert("Company doesn't exist.");
+      swal({
+        title: "Oops...",
+        text: "Input company doesn't exist",
+      });
     }
     setCompanyName("");
     setDaysWork("");
@@ -94,7 +99,7 @@ const Input = () => {
           onChange={onChangeHourswork}
           value={hoursWork}
         />
-        <SubmitBtn onClick={settingHandler} />
+        <SubmitBtn onClick={settingHandler} button="Submit" />
       </ContentContainer>
     </div>
   );

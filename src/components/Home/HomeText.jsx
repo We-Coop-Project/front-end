@@ -10,15 +10,13 @@ const HomeText = () => {
     <div className="text-center px-8">
       <h1>We CO-OP</h1>
       <br />
-      <p>
-        This app manages the co-op's time calculation just by entering your
-        school information.
-      </p>
-
-      <p>
-        If you have a Google or Facebook account, it only takes 3 minutes to set
-        up and it's easy to manage. Let's try!
-      </p>
+      <div className="px-14">
+        <p>
+          This app manages the co-op's time calculation just by entering your
+          school information. If you have a Google or Facebook account, it only
+          takes 3 minutes to set up and it's easy to manage. Let's try!
+        </p>
+      </div>
       <br />
       {!currentUser ? (
         <Link to={"/signin"}>

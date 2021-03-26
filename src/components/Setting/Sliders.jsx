@@ -96,20 +96,19 @@ const Sliders = (props) => {
           <InputTab
             id="company1"
             type="text"
-            placeholder="#1 Company name"
+            placeholder="Company name"
             onChange={props.onChangeCompany}
             disabled={props.disabled}
           />
+          <label className="text-sm">Co-op Job?</label>
           <select
             className="Input"
+            value="isCoop"
             style={{ textAlignLast: "center" }}
             id="isCoop1"
             onChange={props.onChangeIsCoop}
             disabled={props.disabled}
           >
-            <option value="" disabled selected>
-              Co-op Job?
-            </option>
             <option value="CO">Yes</option>
             <option value="OT">No</option>
           </select>
