@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import settingImg from "../../assets/img/setting.png";
 import Sliders from "./Sliders";
 import { ContentContainer, ImgContainer, Title, SubmitBtn } from "../UI/index";
@@ -8,6 +9,7 @@ import swal from "sweetalert";
 
 const Setting = () => {
   const { currentUser } = useAuth();
+  const history = useHistory();
   const [coopStartDate, setCoopStartDate] = useState("");
   const [coopEndDate, setCoopEndDate] = useState("");
   const [coopHours, setCoopHours] = useState("");
@@ -26,7 +28,33 @@ const Setting = () => {
   const settingHandler = async () => {
     const hasId = userStatusData.find((el) => el.uid === currentUser.uid);
     if (hasId) {
-      if (coopStartDate && coopEndDate && coopHours) {
+      if (coopStartDate && coopEndDate && coopHours && company && isCoop) {
+        api
+          .post(`user_status/${currentUser.uid}/`, {
+            coop_start_date: coopStartDate,
+            coop_end_date: coopEndDate,
+            coop_hours: parseInt(coopHours),
+          })
+          .then(() => {
+            api
+              .post("company/", {
+                name: company,
+                hire_type: isCoop,
+                user: currentUser.uid,
+              })
+              .then(() => {
+                alert("Your info is updated");
+                setDisabled(true);
+                history.push("/input");
+              })
+              .catch((err) => {
+                alert(err);
+              });
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      } else if (coopStartDate && coopEndDate && coopHours) {
         api
           .post(`user_status/${currentUser.uid}/`, {
             coop_start_date: coopStartDate,
@@ -35,6 +63,7 @@ const Setting = () => {
           })
           .then(() => {
             swal("Your co-op info is updated!");
+            history.push("/input");
           })
           .catch((err) => {
             swal(err);
@@ -54,6 +83,7 @@ const Setting = () => {
             setCompany("");
             setIsCoop("");
             setDisabled(true);
+            history.push("/input");
           })
           .catch((err) => {
             swal(err);
@@ -65,7 +95,35 @@ const Setting = () => {
         });
       }
     } else {
-      if (coopStartDate && coopEndDate && coopHours) {
+      if (coopStartDate && coopEndDate && coopHours && company && isCoop) {
+        api
+          .post(`user_status/`, {
+            uid: currentUser.uid,
+            coop_start_date: coopStartDate,
+            coop_end_date: coopEndDate,
+            coop_hours: parseInt(coopHours),
+          })
+          .then(() => {
+            api
+              .post("company/", {
+                name: company,
+                hire_type: isCoop,
+                user: currentUser.uid,
+              })
+              .then(() => {
+                alert("Your info is registed");
+                setDisabled(true);
+                history.push("/input");
+              })
+              .catch((err) => {
+                alert(err);
+              });
+            history.push("/input");
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      } else if (coopStartDate && coopEndDate && coopHours) {
         api
           .post(`user_status/`, {
             uid: currentUser.uid,
@@ -75,6 +133,7 @@ const Setting = () => {
           })
           .then(() => {
             swal("Your coop info is registered!");
+            history.push("/input");
           })
           .catch((err) => {
             swal(err);
@@ -91,6 +150,7 @@ const Setting = () => {
             setCompany("");
             setIsCoop("");
             setDisabled(true);
+            history.push("/input");
           })
           .catch((err) => {
             swal(err);
@@ -102,9 +162,9 @@ const Setting = () => {
         });
       }
     }
-    setCoopStartDate("");
-    setCoopEndDate("");
-    setCoopHours("");
+    // setCoopStartDate("");
+    // setCoopEndDate("");
+    // setCoopHours("");
   };
 
   const onChangeCoopStartDate = (e) => {
