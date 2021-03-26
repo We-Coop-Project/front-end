@@ -100,15 +100,16 @@ const Sliders = (props) => {
             onChange={props.onChangeCompany}
             disabled={props.disabled}
           />
-          <label className="text-sm">Co-op Job?</label>
+          {/* <label className="text-sm">Co-op Job?</label> */}
           <select
             className="Input"
-            value="isCoop"
+            // value="isCoop"
             style={{ textAlignLast: "center" }}
             id="isCoop1"
             onChange={props.onChangeIsCoop}
             disabled={props.disabled}
           >
+            <option value="">Co-op Job?</option>
             <option value="CO">Yes</option>
             <option value="OT">No</option>
           </select>

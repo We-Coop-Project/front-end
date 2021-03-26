@@ -76,12 +76,7 @@ const Setting = () => {
             user: currentUser.uid,
           })
           .then(() => {
-            swal({
-              title: "Oops...",
-              text: "Please fill out.",
-            });
-            setCompany("");
-            setIsCoop("");
+            swal("Your company info is updated!");
             setDisabled(true);
             history.push("/input");
           })
@@ -132,7 +127,7 @@ const Setting = () => {
             coop_hours: parseInt(coopHours),
           })
           .then(() => {
-            swal("Your coop info is registered!");
+            swal("Your co-op info is registered!");
             history.push("/input");
           })
           .catch((err) => {
@@ -147,8 +142,6 @@ const Setting = () => {
           })
           .then(() => {
             swal("Your company info is registered!");
-            setCompany("");
-            setIsCoop("");
             setDisabled(true);
             history.push("/input");
           })
