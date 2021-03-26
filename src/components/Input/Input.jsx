@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { api } from "../../api/api";
 import { useAuth } from "../../context/Auth-context";
 import inputImg from "../../assets/img/input.png";
@@ -12,6 +13,7 @@ import {
 
 const Input = () => {
   const { currentUser } = useAuth();
+  const history = useHistory();
   const [companyName, setCompanyName] = useState("");
   const [daysWork, setDaysWork] = useState("");
   const [hoursWork, setHoursWork] = useState("");
@@ -33,11 +35,12 @@ const Input = () => {
         api
           .post(`company/${comanyData[indexCompanyName]["id"]}/`, {
             name: companyName,
-            working_time: parseInt(daysWork),
-            working_days: parseInt(hoursWork),
+            working_time: parseInt(hoursWork),
+            working_days: parseInt(daysWork),
           })
           .then(() => {
             alert("Input data is updated");
+            history.push("/user");
           })
           .catch((err) => {
             alert(err);
@@ -48,9 +51,9 @@ const Input = () => {
     } else {
       alert("Company doesn't exist.");
     }
-    setCompanyName("");
-    setDaysWork("");
-    setHoursWork("");
+    // setCompanyName("");
+    // setDaysWork("");
+    // setHoursWork("");
   };
 
   const onChangeCompanyName = (e) => {

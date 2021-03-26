@@ -27,7 +27,33 @@ const Signin = () => {
   const settingHandler = async () => {
     const hasId = userStatusData.find((el) => el.uid === currentUser.uid);
     if (hasId) {
-      if (coopStartDate && coopEndDate && coopHours) {
+      if (coopStartDate && coopEndDate && coopHours && company && isCoop) {
+        api
+          .post(`user_status/${currentUser.uid}/`, {
+            coop_start_date: coopStartDate,
+            coop_end_date: coopEndDate,
+            coop_hours: parseInt(coopHours),
+          })
+          .then(() => {
+            api
+              .post("company/", {
+                name: company,
+                hire_type: isCoop,
+                user: currentUser.uid,
+              })
+              .then(() => {
+                alert("Your info is updated");
+                setDisabled(true);
+                history.push("/input");
+              })
+              .catch((err) => {
+                alert(err);
+              });
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      } else if (coopStartDate && coopEndDate && coopHours) {
         api
           .post(`user_status/${currentUser.uid}/`, {
             coop_start_date: coopStartDate,
@@ -36,6 +62,7 @@ const Signin = () => {
           })
           .then(() => {
             alert("Your coop info is updated");
+            history.push("/input");
           })
           .catch((err) => {
             alert(err);
@@ -49,9 +76,8 @@ const Signin = () => {
           })
           .then(() => {
             alert("Your company info is updated");
-            setCompany("");
-            setIsCoop("");
             setDisabled(true);
+            history.push("/input");
           })
           .catch((err) => {
             alert(err);
@@ -60,7 +86,35 @@ const Signin = () => {
         alert("Please fill out your coop info");
       }
     } else {
-      if (coopStartDate && coopEndDate && coopHours) {
+      if (coopStartDate && coopEndDate && coopHours && company && isCoop) {
+        api
+          .post(`user_status/`, {
+            uid: currentUser.uid,
+            coop_start_date: coopStartDate,
+            coop_end_date: coopEndDate,
+            coop_hours: parseInt(coopHours),
+          })
+          .then(() => {
+            api
+              .post("company/", {
+                name: company,
+                hire_type: isCoop,
+                user: currentUser.uid,
+              })
+              .then(() => {
+                alert("Your info is registed");
+                setDisabled(true);
+                history.push("/input");
+              })
+              .catch((err) => {
+                alert(err);
+              });
+            history.push("/input");
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      } else if (coopStartDate && coopEndDate && coopHours) {
         api
           .post(`user_status/`, {
             uid: currentUser.uid,
@@ -70,6 +124,7 @@ const Signin = () => {
           })
           .then(() => {
             alert("Your coop info is registered");
+            history.push("/input");
           })
           .catch((err) => {
             alert(err);
@@ -83,9 +138,8 @@ const Signin = () => {
           })
           .then(() => {
             alert("Your company info is registered");
-            setCompany("");
-            setIsCoop("");
             setDisabled(true);
+            history.push("/input");
           })
           .catch((err) => {
             alert(err);
@@ -94,9 +148,9 @@ const Signin = () => {
         alert("Please fill out your coop info");
       }
     }
-    setCoopStartDate("");
-    setCoopEndDate("");
-    setCoopHours("");
+    // setCoopStartDate("");
+    // setCoopEndDate("");
+    // setCoopHours("");
   };
 
   const onChangeCoopStartDate = (e) => {
