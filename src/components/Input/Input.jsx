@@ -26,6 +26,7 @@ const Input = () => {
   }, []);
 
   const settingHandler = async () => {
+    console.log(comanyData);
     const indexCompanyName = comanyData.findIndex(
       (el) => el.name === companyName
     );
@@ -34,8 +35,12 @@ const Input = () => {
         api
           .post(`company/${comanyData[indexCompanyName]["id"]}/`, {
             name: companyName,
-            working_time: parseInt(hoursWork),
-            working_days: parseInt(daysWork),
+            working_time:
+              parseInt(hoursWork) +
+              parseInt(comanyData[indexCompanyName]["working_time"]),
+            working_days:
+              parseInt(daysWork) +
+              parseInt(comanyData[indexCompanyName]["working_days"]),
           })
           .then(() => {
             swal("Input data is updated!");
