@@ -17,6 +17,7 @@ const Aboutus = () => {
         <Title title="About Us" />
         <p className="mb-2 sm:mb-4">
           We want to do something useful for students who go to school like us.
+          <br />
           This app was created in that process, and we hope it will be useful to
           everyone.
         </p>

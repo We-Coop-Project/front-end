@@ -1,17 +1,11 @@
-import React, { createContext, useState } from "react";
+import React from "react";
 import VersionBtn from "./VersionBtn";
 import Hamburger from "./HamburgerMenu/Hamburger";
 import Logo from "../../assets/img/logo01.png";
 import { Link } from "react-router-dom";
 
-// export const MemberContext = createContext([false, () => {}]);
-
 const NavBar = () => {
-  // メンバーであるかどうかの判断で切替
-  // const [isMember, setIsMember] = useState(false);
-
   return (
-    // <MemberContext.Provider value={[isMember, setIsMember]}>
     <div className="NavBar">
       <div>
         <Link to={"/"}>
@@ -27,7 +21,6 @@ const NavBar = () => {
         <Hamburger />
       </div>
     </div>
-    // </MemberContext.Provider>
   );
 };
 

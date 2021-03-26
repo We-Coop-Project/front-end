@@ -1,10 +1,10 @@
 import React from "react";
 
-const SubmitBtn = ({ onClick }) => {
+const SubmitBtn = ({ onClick, button }) => {
   return (
     <div>
       <button className="SubmitBtn" onClick={onClick}>
-        Submit
+        {button}
       </button>
     </div>
   );

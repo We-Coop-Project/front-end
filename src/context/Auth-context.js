@@ -29,7 +29,7 @@ export function AuthProvider({ children }) {
       });
   }, []);
 
-  useEffect(() => console.log("curr: ", currentUser), [currentUser]);
+  // useEffect(() => console.log("curr: ", currentUser), [currentUser]);
 
   const uiConfig = {
     signInFlow: "popup",

@@ -2,7 +2,6 @@ import React from "react";
 import { useHamOpen } from "../../../context/HamOpen-context";
 
 const MenuButton = (props) => {
-  // const [open, setOpen] = useState(props.open ? props.open : false);
   const { menuOpen, setMenuOpen } = useHamOpen();
 
   const handleClick = () => {

@@ -5,8 +5,9 @@ import Sliders from "./Sliders";
 import { ContentContainer, ImgContainer, Title, SubmitBtn } from "../UI/index";
 import { useAuth } from "../../context/Auth-context";
 import { api } from "../../api/api";
+import swal from "sweetalert";
 
-const Signin = () => {
+const Setting = () => {
   const { currentUser } = useAuth();
   const history = useHistory();
   const [coopStartDate, setCoopStartDate] = useState("");
@@ -61,11 +62,11 @@ const Signin = () => {
             coop_hours: parseInt(coopHours),
           })
           .then(() => {
-            alert("Your coop info is updated");
+            swal("Your co-op info is updated!");
             history.push("/input");
           })
           .catch((err) => {
-            alert(err);
+            swal(err);
           });
       } else if (company && isCoop) {
         api
@@ -75,15 +76,23 @@ const Signin = () => {
             user: currentUser.uid,
           })
           .then(() => {
-            alert("Your company info is updated");
+            swal({
+              title: "Oops...",
+              text: "Please fill out.",
+            });
+            setCompany("");
+            setIsCoop("");
             setDisabled(true);
             history.push("/input");
           })
           .catch((err) => {
-            alert(err);
+            swal(err);
           });
       } else {
-        alert("Please fill out your coop info");
+        swal({
+          title: "Oops...",
+          text: "Please fill out.",
+        });
       }
     } else {
       if (coopStartDate && coopEndDate && coopHours && company && isCoop) {
@@ -123,11 +132,11 @@ const Signin = () => {
             coop_hours: parseInt(coopHours),
           })
           .then(() => {
-            alert("Your coop info is registered");
+            swal("Your coop info is registered!");
             history.push("/input");
           })
           .catch((err) => {
-            alert(err);
+            swal(err);
           });
       } else if (company && isCoop) {
         api
@@ -137,15 +146,20 @@ const Signin = () => {
             user: currentUser.uid,
           })
           .then(() => {
-            alert("Your company info is registered");
+            swal("Your company info is registered!");
+            setCompany("");
+            setIsCoop("");
             setDisabled(true);
             history.push("/input");
           })
           .catch((err) => {
-            alert(err);
+            swal(err);
           });
       } else {
-        alert("Please fill out your coop info");
+        swal({
+          title: "Oops...",
+          text: "Please fill out all the boxes.",
+        });
       }
     }
     // setCoopStartDate("");
@@ -190,11 +204,12 @@ const Signin = () => {
           coopStartDate={coopStartDate}
           coopEndDate={coopEndDate}
           coopHours={coopHours}
+          curentValue={""}
         />
-        <SubmitBtn onClick={settingHandler} />
+        <SubmitBtn onClick={settingHandler} button="Save" />
       </ContentContainer>
     </div>
   );
 };
 
-export default Signin;
+export default Setting;
