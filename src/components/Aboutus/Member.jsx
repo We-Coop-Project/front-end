@@ -6,7 +6,12 @@ const Member = (props) => {
       <img className="MemberImg" src={props.image} alt={props.name} />
       <h6>{props.name}</h6>
       <small>
-        <a href={props.url} target="_blank" className="hover:opacity-70">
+        <a
+          href={props.url}
+          rel="noreferrer"
+          target="_blank"
+          className="hover:opacity-70"
+        >
           Link
         </a>
       </small>
