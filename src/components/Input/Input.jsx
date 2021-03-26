@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useAuth } from "../../context/Auth-context";
 import { useHistory } from "react-router-dom";
 import { api } from "../../api/api";
 import inputImg from "../../assets/img/input.png";
