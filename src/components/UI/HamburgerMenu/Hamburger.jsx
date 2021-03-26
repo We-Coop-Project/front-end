@@ -66,7 +66,7 @@ const Hamburger = () => {
         {currentUser ? (
           <div style={styles.container}>
             <div style={styles.menuItem}>
-              <div className="text-center mt-5">
+              <div className="text-center mt-14">
                 <Button id="signOut" button="Sign Out" onClick={logout} />
               </div>
             </div>
