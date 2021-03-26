@@ -97,7 +97,7 @@ const Contact = () => {
             }}
           />
         </form>
-        <SubmitBtn onClick={submitForm} />
+        <SubmitBtn onClick={submitForm} button="Submit" />
       </ContentContainer>
     </div>
   );
