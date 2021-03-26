@@ -47,7 +47,6 @@ const Contact = () => {
           message,
       };
       const url = process.env.REACT_APP_SLACK;
-      const url = "";
 
       fetch(url, {
         method: "POST",
