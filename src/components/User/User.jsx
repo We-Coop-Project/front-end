@@ -54,10 +54,6 @@ const User = () => {
     }
   };
 
-  // if (isLoading) {
-  //   return <Loading />;
-  // }
-
   return (
     <div className="User">
       <div className="w-full flex justify-center">
