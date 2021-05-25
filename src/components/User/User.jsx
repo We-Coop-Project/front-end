@@ -11,25 +11,22 @@ import FirstCoop from "./Graphs/FirstCoop";
 import SecondCoop from "./Graphs/SecondCoop";
 import ThirdCoop from "./Graphs/ThirdCoop";
 import { coopTime, duration } from "./GraphData";
-// import Loading from "./Loading";
 
 const User = () => {
   const { currentUser } = useAuth();
   const [selectedGraph, setSelectedGraph] = useState("");
   const [graphData, setGraphData] = useState({});
   const [currentCompany, setCurrentCompany] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
 
   let uid = currentUser.uid;
 
   useEffect(() => {
     const getData = async () => {
-      // setIsLoading(true);
       const res = await api.get(`user_status/${uid}`);
       const calculatedData = await calculateData(res.data);
+
       setCurrentCompany(res.data.company_status);
       setGraphData(calculatedData);
-      // setIsLoading(false);
     };
     getData();
   }, [uid]);
@@ -56,10 +53,6 @@ const User = () => {
         return <TotalCoop data={graphData} />;
     }
   };
-
-  // if (isLoading) {
-  //   return <Loading />;
-  // }
 
   return (
     <div className="User">

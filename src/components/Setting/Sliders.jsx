@@ -114,28 +114,6 @@ const Sliders = (props) => {
             <option value="OT">No</option>
           </select>
         </div>
-        {/* <div className="focus:outline-none z-10">
-          <InputTab
-            id="company2"
-            type="text"
-            placeholder="#2 Company name"
-            onChange={props.onChangeCompany}
-            disabled={props.disabled}
-          />
-          <select
-            className="Input2"
-            style={{ textAlignLast: "center" }}
-            id="isCoop2"
-            onChange={props.onChangeIsCoop}
-            disabled={props.disabled}
-          >
-            <option value="" disabled selected>
-              Co-op Job?
-            </option>
-            <option value="CO">Yes</option>
-            <option value="OT">No</option>
-          </select>
-        </div>  */}
       </Slider>
     </div>
   );
