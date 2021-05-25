@@ -19,9 +19,6 @@ export const Hint = (props) => {
 
   return (
     <div className="hintContainer">
-      {/* <div className="hintInner" onClick={() => setShowPopup(true)}>
-        ?
-      </div> */}
       {showPopup && (
         <div
           className="popupContainer"
